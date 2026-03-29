@@ -3,3 +3,14 @@ dist
 dist-server
 .git
 npm-debug.log*
+.DS_Store
+.idea
+.vscode
+coverage
+docs/review
+opsx
+openspec
+tmp
+*.local
+.env
+.env.*

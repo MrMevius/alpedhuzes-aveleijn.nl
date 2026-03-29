@@ -64,6 +64,39 @@ docker build -t alpedhuzes-aveleijn .
 docker run --rm -p 8099:8099 alpedhuzes-aveleijn
 ```
 
+Detached sample command:
+
+```bash
+docker run -d --name alpedhuzes-aveleijn -p 8099:8099 alpedhuzes-aveleijn
+```
+
+Port mapping:
+
+- Container port is fixed at `8099`.
+- `-p 8099:8099` maps host `8099` to container `8099`.
+- If host port `8099` is already in use, map another host port (example: `-p 8100:8099`).
+
+Runtime environment (minimal):
+
+- `NODE_ENV=production`
+- `PORT=8099`
+
+Container verification quick checks:
+
+```bash
+curl -i http://127.0.0.1:8099/
+curl -i http://127.0.0.1:8099/api/health
+curl -i http://127.0.0.1:8099/api/progress
+```
+
+Troubleshooting:
+
+- **Container won't start**: run `docker logs alpedhuzes-aveleijn` to inspect startup errors.
+- **Port conflict on 8099**: use a different host mapping (for example `-p 8100:8099`).
+- **Healthcheck shows unhealthy**: verify `GET /api/health` responds locally in the container logs and that startup completed.
+- **Progress endpoint looks stale/slow**: first request can be slower due to upstream scraping; stale fallback is expected if upstream fundraiser pages are temporarily unavailable.
+- **Need to re-run cleanly**: `docker rm -f alpedhuzes-aveleijn` and start again.
+
 ## Architecture notes
 
 - Homepage is section-modular under `src/sections/*`.

@@ -1,8 +1,13 @@
+FROM node:20-alpine AS deps
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
 FROM node:20-alpine AS build
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install
+COPY --from=deps /app/node_modules ./node_modules
 
 COPY . .
 RUN npm run build
@@ -13,8 +18,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8099
 
-COPY package.json package-lock.json* ./
-RUN npm install --omit=dev
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm cache clean --force
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/dist-server ./dist-server

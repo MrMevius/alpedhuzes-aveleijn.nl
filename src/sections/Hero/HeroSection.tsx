@@ -20,12 +20,12 @@ export function HeroSection({ content }: HeroSectionProps) {
       {content.description ? <p className={styles.description}>{content.description}</p> : null}
       <div className={styles.actions}>
         {content.primaryCta.label ? (
-          <a href={content.primaryCta.href} className={styles.ctaLink}>
+          <a href={content.primaryCta.href} className={`${styles.ctaLink} ${styles.primaryCta}`}>
             {content.primaryCta.label}
           </a>
         ) : null}
         {content.secondaryCta.label ? (
-          <a href={content.secondaryCta.href} className={styles.ctaLink}>
+          <a href={content.secondaryCta.href} className={`${styles.ctaLink} ${styles.secondaryCta}`}>
             {content.secondaryCta.label}
           </a>
         ) : null}

@@ -1,36 +1,38 @@
 .section {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5);
   text-align: center;
 }
 
 .backgroundImage {
   width: 100%;
-  max-height: 520px;
+  max-height: 610px;
   object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lift);
+  filter: brightness(0.78) saturate(0.9);
 }
 
 .logoImage {
-  width: min(220px, 40vw);
+  width: min(240px, 38vw);
   justify-self: center;
-  margin-top: calc(var(--space-8) * -1);
+  margin-top: calc(var(--space-10) * -1);
   background: #ffffff;
   border-radius: 999px;
-  padding: var(--space-2);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  padding: var(--space-2) var(--space-3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
 }
 
 .subtitle {
   margin: 0;
   font-weight: 700;
   color: var(--color-text);
+  font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.5rem);
 }
 
 .description {
   margin: 0;
-  max-width: 860px;
+  max-width: var(--measure-reading);
   justify-self: center;
 }
 
@@ -38,32 +40,60 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .ctaLink {
   display: inline-block;
-  padding: var(--space-3) var(--space-6);
-  border: 1px solid #cfb5e5;
+  padding: 0.78rem 1.6rem;
+  border: 1px solid transparent;
   border-radius: 999px;
   text-decoration: none;
-  color: var(--color-text);
-  background: #ffffff;
+  color: #ffffff;
+  background: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .ctaLink:hover,
 .ctaLink:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(106, 27, 154, 0.15);
+  box-shadow: 0 10px 24px rgba(0, 40, 102, 0.24);
+}
+
+.primaryCta {
+  background: var(--color-accent);
+}
+
+.secondaryCta {
+  background: #ffffff;
+  color: var(--color-accent);
+  border-color: #cfd9e4;
+}
+
+.secondaryCta:hover,
+.secondaryCta:focus-visible {
+  color: var(--color-accent-strong);
+  box-shadow: 0 10px 24px rgba(17, 36, 54, 0.16);
 }
 
 @media (max-width: 700px) {
   .backgroundImage {
-    max-height: 360px;
+    max-height: 420px;
   }
 
   .logoImage {
-    width: min(180px, 55vw);
+    width: min(190px, 58vw);
+    margin-top: calc(var(--space-8) * -1);
+  }
+
+  .actions {
+    gap: var(--space-3);
+  }
+
+  .ctaLink {
+    width: 100%;
+    max-width: 340px;
   }
 }

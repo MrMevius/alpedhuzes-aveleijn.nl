@@ -2,13 +2,13 @@
   display: grid;
   gap: var(--space-4);
   text-align: center;
-  background: #333333;
-  border-radius: 12px;
-  padding: var(--space-8);
+  background: #2d3438;
+  border-radius: var(--radius-card);
+  padding: var(--space-10) var(--space-6);
 }
 
 .section h2 {
-  color: #fbfbfb;
+  color: #f3f6f8;
 }
 
 .menu {
@@ -22,11 +22,16 @@
 }
 
 .menuLink {
-  color: #d4d4d4;
+  color: #d9e1e5;
   text-decoration: none;
+}
+
+.menuLink:hover,
+.menuLink:focus-visible {
+  color: #ffffff;
 }
 
 .copyright {
   margin: 0;
-  color: #a8a8a8;
+  color: #b5bfc5;
 }

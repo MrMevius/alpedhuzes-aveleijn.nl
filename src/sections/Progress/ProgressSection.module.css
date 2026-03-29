@@ -1,48 +1,49 @@
 .section {
   display: grid;
-  gap: var(--space-3);
-  max-width: 680px;
+  gap: var(--space-4);
+  max-width: 760px;
   margin-inline: auto;
-  background: #ffffff;
-  border: 1px solid #ece7f2;
-  border-radius: 14px;
-  padding: var(--space-6);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-soft);
 }
 
 .progressBarTrack {
   width: 100%;
-  height: 16px;
+  height: 18px;
   border-radius: 999px;
-  background: #f1e6f7;
+  background: #e0e8f3;
   overflow: hidden;
 }
 
 .progressBarFill {
   height: 100%;
-  background: linear-gradient(90deg, #6a1b9a, #8e24aa);
+  background: linear-gradient(90deg, #006070, #002866);
   transition: width 0.4s ease;
 }
 
 .metric {
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
+  font-size: clamp(1.05rem, 0.95rem + 0.25vw, 1.2rem);
 }
 
 .status {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
 }
 
 .error {
   margin: 0;
-  font-size: 0.95rem;
-  color: #a12f2f;
+  font-size: 0.94rem;
+  color: #8d2626;
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: var(--space-4);
+    padding: var(--space-5);
   }
 }

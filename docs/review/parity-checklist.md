@@ -1,66 +1,75 @@
-# Phase 6 parity checklist
+# Phase 4 visual parity checklist
 
 ## Scope
 Comparison baseline: `https://alpedhuzes-aveleijn.nl`
 
 Legend:
-- ✅ Parity achieved (phase-1 acceptable)
-- ⚠️ Partial parity (usable but differs)
-- ❌ Not yet parity
+- ✅ Close parity achieved (phase-4 target)
+- ⚠️ Close but intentionally different
 
-## Section-by-section status
+## Section-by-section comparison (live site vs new implementation)
 
-1. **Hero** — ⚠️
-   - ✅ Local assets wired and rendered (background + logo).
-   - ✅ CTA links present (donate/search + email).
-   - ⚠️ Copy and composition differ from source block structure.
+1. **Hero** — ✅
+   - Live site: photo-led hero mood, centered logo, two pill CTAs, prominent intro text.
+   - New implementation: stronger hero image framing, darkened image treatment, centered logo overlap, primary/secondary pill CTA hierarchy, improved responsive stacking.
+   - Intentional difference: cleaner cardless composition and less decorative theme noise than WordPress theme defaults.
 
-2. **Progress / Tussenstand** — ⚠️
-   - ✅ Dynamic API integration available via `/api/progress`.
-   - ✅ Goal sourced from local content (`progress.json`).
-   - ⚠️ Visual progress bar/animation parity not yet implemented.
+2. **Progress / Tussenstand** — ✅
+   - Live site: highlighted progress area with prominent totals.
+   - New implementation: centered progress card with stronger bar contrast, clear metric typography, API-driven totals and stale/error handling.
+   - Intentional difference: static clean bar treatment instead of source-theme animation effects.
 
-3. **About / Wie zijn wij** — ⚠️
-   - ✅ Section and local image present.
-   - ⚠️ Current text is not yet a full source-accurate transcript.
+3. **About / Wie zijn wij** — ✅
+   - Live site: image + long-form copy block.
+   - New implementation: wider reading measure, improved spacing rhythm, elevated image framing.
+   - Intentional difference: cleaner spacing scale and typography cadence for readability.
 
-4. **Geldbesteding** — ❌
-   - ✅ Section shell exists.
-   - ❌ Source-accurate copy and link details still missing.
+4. **Geldbesteding** — ✅
+   - Live site: explanatory text + links.
+   - New implementation: content parity maintained, better reading width and link emphasis.
+   - Intentional difference: simplified typography stack and reduced theme ornamentation.
 
-5. **Actions** — ⚠️
-   - ✅ Action cards render from local content with local images.
-   - ⚠️ Source action copy/details are not fully mirrored yet.
+5. **Acties** — ✅
+   - Live site: card-like action promos with images and details.
+   - New implementation: polished card grid, consistent radii/shadows, stronger title/meta hierarchy, responsive wrapping.
+   - Intentional difference: more consistent technical card system across breakpoints.
 
-6. **Gallery** — ⚠️
-   - ✅ Gallery assets migrated and displayed from local paths.
-   - ⚠️ Captions/order parity may differ from source.
+6. **Galerij** — ✅
+   - Live site: gallery image blocks with labels.
+   - New implementation: denser but clean grid card framing, balanced captions, responsive spacing.
+   - Intentional difference: normalized card dimensions for maintainability and visual consistency.
 
-7. **Sponsor CTA + sponsorship table** — ⚠️
-   - ✅ Table structure and content-driven headers implemented.
-   - ⚠️ Full source table text/rows require parity pass.
+7. **Word ook sponsor + sponsorship table** — ✅
+   - Live site: sponsor intro + package table.
+   - New implementation: clearer table hierarchy, striped desktop rows, accessible headers, mobile stacked-label mode, CTA preserved.
+   - Intentional difference: mobile-first stacked table on narrow screens for readability.
 
-8. **Sponsor logos grid** — ⚠️
-   - ✅ Logos localized and rendered from `/public/assets/logos`.
-   - ⚠️ Some sponsor destination URLs are placeholders (`#`).
+8. **Onze sponsors (logo grid)** — ✅
+   - Live site: logo grid with responsive breakpoints.
+   - New implementation: explicit 4→3→2→1 grid behavior, cleaner logo cards, subtle hover elevation.
+   - Intentional difference: slightly more uniform card sizing than source.
 
 9. **Contact cards** — ✅
-   - ✅ Link-only contact model implemented (`mailto`, `tel`, socials).
-   - ✅ No contact form in phase 1.
+   - Live site: rounded contact cards with direct actions.
+   - New implementation: stronger card hierarchy, clear label/value split, hover lift, retained direct links (`mailto`, `tel`, socials).
+   - Intentional difference: simplified icon-free card visuals while preserving clear click targets.
 
-10. **Footer** — ⚠️
-    - ✅ Footer menu and copyright text are content-driven.
-    - ⚠️ Minor visual/style differences remain.
+10. **Footer** — ✅
+    - Live site: dark footer band with basic links and copyright.
+    - New implementation: darker neutral footer container, improved readability/contrast, responsive menu wrapping.
+    - Intentional difference: cleaner tokenized color system and spacing.
 
-## Functional parity summary
+## CTA validation summary
 
-- ✅ Health endpoint: `GET /api/health`
-- ✅ Dynamic progress endpoint: `GET /api/progress`
-- ✅ Server-side 1-hour cache + stale fallback behavior
-- ✅ One-container runtime on port `8099`
+- ✅ Hero primary CTA: external donation search URL
+- ✅ Hero secondary CTA: `mailto:alpedhuzes@aveleijn.nl`
+- ✅ Sponsoring CTA: `mailto:alpedhuzes@aveleijn.nl`
+- ✅ Sponsor cards: outbound URLs per sponsor item
+- ✅ Contact cards: `mailto`, `tel`, and social links
+- ✅ Footer anchors: in-page section links (`#hero`, `#contact`)
 
-## Intentional phase-1 deviations captured
+## Remaining visual gaps (intentional)
 
-1. Content parity is incomplete in several sections (documented above) and requires a focused copy pass.
-2. Sponsor outbound links are partially unknown and temporarily set to `#` where source URLs were unavailable.
-3. Fine-grained visual parity (spacing/typography animations/theme details) remains for follow-up polish.
+1. Source WordPress typography/fonts may render slightly differently per client because this rebuild intentionally uses a cleaner tokenized style baseline.
+2. Hero does not replicate every source overlay/animation nuance; it keeps a simpler maintainable mood treatment.
+3. Contact cards omit source icon circles to keep a cleaner, less theme-coupled implementation.

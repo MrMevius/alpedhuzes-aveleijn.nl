@@ -16,17 +16,21 @@ export function SponsoringSection({ content }: SponsoringSectionProps) {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>{content.tableHeaders.package}</th>
-              <th>{content.tableHeaders.contribution}</th>
-              <th>{content.tableHeaders.benefits}</th>
+              <th scope="col">{content.tableHeaders.package}</th>
+              <th scope="col">{content.tableHeaders.contribution}</th>
+              <th scope="col">{content.tableHeaders.benefits}</th>
             </tr>
           </thead>
           <tbody>
             {content.tiers.map((tier) => (
               <tr key={tier.name}>
-                <td className={styles.cell}>{tier.name}</td>
-                <td className={styles.cell}>{tier.contribution}</td>
-                <td className={styles.cell}>
+                <td className={styles.cell} data-label={content.tableHeaders.package}>
+                  {tier.name}
+                </td>
+                <td className={styles.cell} data-label={content.tableHeaders.contribution}>
+                  {tier.contribution}
+                </td>
+                <td className={styles.cell} data-label={content.tableHeaders.benefits}>
                   <ul className={styles.benefitsList}>
                     {tier.benefits.map((benefit) => (
                       <li key={benefit}>{benefit}</li>

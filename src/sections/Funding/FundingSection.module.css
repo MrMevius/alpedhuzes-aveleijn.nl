@@ -1,13 +1,14 @@
 .section {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .paragraph {
   margin: 0;
-  max-width: 860px;
+  max-width: var(--measure-reading);
 }
 
 .paragraph a {
   color: var(--color-accent);
+  font-weight: 600;
 }

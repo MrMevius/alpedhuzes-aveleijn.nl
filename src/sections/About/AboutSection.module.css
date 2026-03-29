@@ -1,16 +1,17 @@
 .section {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .image {
   width: 100%;
-  max-width: 780px;
-  border-radius: 12px;
+  max-width: 860px;
+  border-radius: var(--radius-card);
   justify-self: center;
+  box-shadow: var(--shadow-soft);
 }
 
 .paragraph {
   margin: 0;
-  max-width: 860px;
+  max-width: var(--measure-reading);
 }

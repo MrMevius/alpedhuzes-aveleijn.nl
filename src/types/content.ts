@@ -16,6 +16,8 @@ export interface SiteContent {
     navigationAriaLabel: string
     menu: LinkItem[]
     copyright: string
+    agencyLink?: LinkItem
+    sponsorLink?: LinkItem
   }
 }
 

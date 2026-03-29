@@ -35,3 +35,17 @@
   margin: 0;
   color: #b5bfc5;
 }
+
+.copyright a {
+  color: #f3f6f8;
+  text-underline-offset: 2px;
+}
+
+.copyright a:hover,
+.copyright a:focus-visible {
+  color: #ffffff;
+}
+
+.separator {
+  color: #b5bfc5;
+}

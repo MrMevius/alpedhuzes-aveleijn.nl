@@ -52,6 +52,8 @@ function parseImage(value: unknown, context: string) {
 function parseSiteContent(value: unknown): SiteContent {
   const object = requiredObject(value, 'site')
   const footer = requiredObject(object.footer, 'site.footer')
+  const agencyLink = footer.agencyLink ? parseLink(footer.agencyLink, 'site.footer.agencyLink') : undefined
+  const sponsorLink = footer.sponsorLink ? parseLink(footer.sponsorLink, 'site.footer.sponsorLink') : undefined
 
   const menu = requiredObjectArray(footer.menu, 'site.footer.menu').map((item, index) =>
     parseLink(item, `site.footer.menu[${index}]`)
@@ -64,7 +66,9 @@ function parseSiteContent(value: unknown): SiteContent {
     footer: {
       navigationAriaLabel: requiredString(footer.navigationAriaLabel, 'site.footer.navigationAriaLabel'),
       menu,
-      copyright: requiredString(footer.copyright, 'site.footer.copyright')
+      copyright: requiredString(footer.copyright, 'site.footer.copyright'),
+      agencyLink,
+      sponsorLink
     }
   }
 }

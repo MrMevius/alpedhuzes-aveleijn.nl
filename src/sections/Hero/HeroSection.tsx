@@ -10,12 +10,14 @@ interface HeroSectionProps {
 export function HeroSection({ content }: HeroSectionProps) {
   return (
     <SectionBlock id={content.sectionId} title={content.title} className={styles.section}>
-      <ImageWithFallback
-        src={content.backgroundImage.src}
-        alt={content.backgroundImage.alt}
-        className={styles.backgroundImage}
-      />
-      <ImageWithFallback src={content.logoImage.src} alt={content.logoImage.alt} className={styles.logoImage} />
+      <div className={styles.mediaFrame}>
+        <ImageWithFallback
+          src={content.backgroundImage.src}
+          alt={content.backgroundImage.alt}
+          className={styles.backgroundImage}
+        />
+        <ImageWithFallback src={content.logoImage.src} alt={content.logoImage.alt} className={styles.logoImage} />
+      </div>
       {content.subtitle ? <p className={styles.subtitle}>{content.subtitle}</p> : null}
       {content.description ? <p className={styles.description}>{content.description}</p> : null}
       <div className={styles.actions}>

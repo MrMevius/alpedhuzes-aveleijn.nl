@@ -20,7 +20,23 @@ export function FooterSection({ content }: FooterSectionProps) {
           ))}
         </ul>
       </nav>
-      {content.footer.copyright ? <p className={styles.copyright}>{content.footer.copyright}</p> : null}
+      {content.footer.copyright ? (
+        <p className={styles.copyright}>
+          {content.footer.copyright}
+          {content.footer.agencyLink ? (
+            <>
+              {' '}
+              <a href={content.footer.agencyLink.href}>{content.footer.agencyLink.label}</a>
+            </>
+          ) : null}
+          {content.footer.sponsorLink ? (
+            <>
+              <span className={styles.separator}> sponsored by </span>
+              <a href={content.footer.sponsorLink.href}>{content.footer.sponsorLink.label}</a>
+            </>
+          ) : null}
+        </p>
+      ) : null}
     </SectionBlock>
   )
 }

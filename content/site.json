@@ -8,12 +8,16 @@
       {
         "label": "Home",
         "href": "#hero"
-      },
-      {
-        "label": "Contact",
-        "href": "#contact"
       }
     ],
-    "copyright": "© 2025 alpedhuzes-aveleijn.nl – Website door Tivius sponsored by N&M Consultancy"
+    "copyright": "© 2025 alpedhuzes-aveleijn.nl – Website door",
+    "agencyLink": {
+      "label": "Tivius",
+      "href": "https://tivius.nl"
+    },
+    "sponsorLink": {
+      "label": "N&M Consultancy",
+      "href": "https://n-m-consultancy.nl"
+    }
   }
 }

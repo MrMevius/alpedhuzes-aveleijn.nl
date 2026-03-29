@@ -3,10 +3,18 @@
   gap: var(--space-4);
 }
 
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
 .card {
-  border: 1px solid #efefef;
-  border-radius: 8px;
+  border: 1px solid #ece7f2;
+  border-radius: 14px;
   padding: var(--space-4);
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
 }
 
 .cardImage {
@@ -19,6 +27,7 @@
 
 .cardTitle {
   margin: 0 0 var(--space-2);
+  line-height: 1.25;
 }
 
 .cardDescription,
@@ -28,4 +37,10 @@
 
 .cardMeta {
   margin-top: var(--space-2);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.notice {
+  margin: 0;
 }

@@ -20,7 +20,7 @@ export function FooterSection({ content }: FooterSectionProps) {
           ))}
         </ul>
       </nav>
-      {content.footer.copyright ? <p>{content.footer.copyright}</p> : null}
+      {content.footer.copyright ? <p className={styles.copyright}>{content.footer.copyright}</p> : null}
     </SectionBlock>
   )
 }

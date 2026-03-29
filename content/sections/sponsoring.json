@@ -1,11 +1,76 @@
 {
   "sectionId": "sponsoring",
   "title": "Word ook sponsor",
-  "intro": "",
+  "intro": "Wil je met jouw organisatie of bedrijf een bijdrage leveren? Met jullie steun kunnen wij niet alleen de Alpe d’Huez bedwingen, maar ook een waardevolle bijdrage leveren aan onderzoek dat levens kan veranderen.",
+  "note": "Alle sponsormogelijkheden staan in onderstaande tabel.",
+  "cta": {
+    "label": "Neem contact op over sponsoring",
+    "href": "mailto:alpedhuzes@aveleijn.nl"
+  },
   "tableHeaders": {
-    "package": "Pakket",
-    "contribution": "Bijdrage",
+    "package": "Donatiecategorie",
+    "contribution": "Bijdrage vanaf",
     "benefits": "Tegenprestatie"
   },
-  "tiers": []
+  "tiers": [
+    {
+      "name": "Vrije donatie",
+      "contribution": "< € 500",
+      "benefits": [
+        "Vermelding op de deelnemerspagina of teampagina"
+      ]
+    },
+    {
+      "name": "Pakket 1",
+      "contribution": "vanaf € 500",
+      "benefits": [
+        "Logo op onze website alpedhuzes-aveleijn.nl",
+        "Vermelding op onze socialmediakanalen"
+      ]
+    },
+    {
+      "name": "Pakket 2",
+      "contribution": "vanaf € 1000",
+      "benefits": [
+        "Logo op onze website alpedhuzes-aveleijn.nl",
+        "Vermelding op onze socialmediakanalen",
+        "Logo op de actiepagina van het team",
+        "Logo op de achterzijde van het teamshirt"
+      ]
+    },
+    {
+      "name": "Pakket 3",
+      "contribution": "vanaf € 1500",
+      "benefits": [
+        "Logo op onze website alpedhuzes-aveleijn.nl",
+        "Vermelding op onze socialmediakanalen",
+        "Logo op onze website alpedhuzes-aveleijn.nl",
+        "Vermelding op onze socialmediakanalen",
+        "Logo op de actiepagina van het team",
+        "Logo op de achterzijde van het teamshirt",
+        "1 banner langs het parcours (100 × 300 cm, door sponsor aan te leveren)",
+        "2e banner + €500"
+      ]
+    },
+    {
+      "name": "Pakket 4",
+      "contribution": "vanaf € 3000",
+      "benefits": [
+        "Logo op onze website alpedhuzes-aveleijn.nl",
+        "Vermelding op onze socialmediakanalen",
+        "Logo op de actiepagina van het team",
+        "Logo op de achterzijde van het teamshirt",
+        "1 banner langs het parcours (100 × 300 cm, door sponsor aan te leveren)",
+        "2e banner + €500",
+        "Logo in roulerend reclameblok op opgevenisgeenoptie.nl"
+      ]
+    },
+    {
+      "name": "Maatwerk",
+      "contribution": "In overleg",
+      "benefits": [
+        "Maatwerk is ook mogelijk, neem hiervoor contact op met alpedhuzes@aveleijn.nl of bel naar +31 6 14326468"
+      ]
+    }
+  ]
 }

@@ -2,11 +2,20 @@
   "sectionId": "about",
   "title": "Wie zijn wij",
   "paragraphs": [
-    "Wij zijn een betrokken team vanuit Aveleijn dat samen in actie komt voor Alpe d'HuZes.",
-    "Met sportieve uitdagingen en acties willen wij bijdragen aan een wereld waarin je niet meer doodgaat aan kanker."
+    "Aveleijn is een organisatie die in Twente en Berkelland zorg en ondersteuning biedt aan mensen met een beperking. Wij zijn collega's en vrijwilligers van Aveleijn en doen samen met vrienden en familie met 2 fantastische teams mee aan de Alpe d'HuZes",
+    "Doorzettingsvermogen, behulpzaam, lef, energiek, klaarstaan voor een ander, samen moeten wij dit kunnen. Een leven vol betekenis, met een andere dimensie",
+    "We hopen door mee te doen aan de Alpe d'HuZes een geweldig bedrag bij elkaar te halen.",
+    "Samen sterk omdat wij geloven dat wij samen kunnen werken aan een wereld waarin je niet meer doodgaat aan kanker.",
+    "Ons teamdoel dit jaar: € 66.666",
+    "Help jij ons mee ons doel te behalen?",
+    "Ga dan naar de website van Stichting Alpe d’HuZes, je kunt hier op een of meer teams doneren of een donatie geven op deelnemers persoonlijk."
   ],
+  "donationLink": {
+    "label": "Stichting Alpe d’HuZes",
+    "href": "https://inschrijving.opgevenisgeenoptie.nl/search?kw=aveleijn"
+  },
   "image": {
     "src": "/assets/images/about-team-ejb2683.jpg",
-    "alt": "Team Aveleijn in actie"
+    "alt": ""
   }
 }

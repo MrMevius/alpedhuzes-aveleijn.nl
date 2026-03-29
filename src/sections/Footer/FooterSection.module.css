@@ -1,10 +1,20 @@
 .section {
   display: grid;
   gap: var(--space-4);
+  text-align: center;
+  background: #333333;
+  border-radius: 12px;
+  padding: var(--space-8);
+}
+
+.section h2 {
+  color: #fbfbfb;
 }
 
 .menu {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: var(--space-4);
   list-style: none;
   padding: 0;
@@ -12,6 +22,11 @@
 }
 
 .menuLink {
-  color: var(--color-text);
+  color: #d4d4d4;
   text-decoration: none;
+}
+
+.copyright {
+  margin: 0;
+  color: #a8a8a8;
 }

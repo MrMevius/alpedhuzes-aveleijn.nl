@@ -101,22 +101,30 @@ function parseProgressContent(value: unknown): ProgressContent {
 
 function parseAboutContent(value: unknown): AboutContent {
   const object = requiredObject(value, 'about')
+  const donationLink = object.donationLink ? parseLink(object.donationLink, 'about.donationLink') : undefined
 
   return {
     sectionId: requiredString(object.sectionId, 'about.sectionId'),
     title: requiredString(object.title, 'about.title'),
     paragraphs: requiredStringArray(object.paragraphs, 'about.paragraphs'),
+    donationLink,
     image: parseImage(object.image, 'about.image')
   }
 }
 
 function parseFundingContent(value: unknown): FundingContent {
   const object = requiredObject(value, 'funding')
+  const links = object.links
+    ? requiredObjectArray(object.links, 'funding.links').map((item, index) =>
+        parseLink(item, `funding.links[${index}]`)
+      )
+    : undefined
 
   return {
     sectionId: requiredString(object.sectionId, 'funding.sectionId'),
     title: requiredString(object.title, 'funding.title'),
-    paragraphs: requiredStringArray(object.paragraphs, 'funding.paragraphs')
+    paragraphs: requiredStringArray(object.paragraphs, 'funding.paragraphs'),
+    links
   }
 }
 
@@ -132,6 +140,7 @@ function parseActionsContent(value: unknown): ActionsContent {
   return {
     sectionId: requiredString(object.sectionId, 'actions.sectionId'),
     title: requiredString(object.title, 'actions.title'),
+    notice: optionalString(object.notice),
     items
   }
 }
@@ -147,6 +156,7 @@ function parseGalleryContent(value: unknown): GalleryContent {
   return {
     sectionId: requiredString(object.sectionId, 'gallery.sectionId'),
     title: requiredString(object.title, 'gallery.title'),
+    intro: optionalString(object.intro),
     images
   }
 }
@@ -154,6 +164,7 @@ function parseGalleryContent(value: unknown): GalleryContent {
 function parseSponsoringContent(value: unknown): SponsoringContent {
   const object = requiredObject(value, 'sponsoring')
   const tableHeaders = requiredObject(object.tableHeaders, 'sponsoring.tableHeaders')
+  const cta = object.cta ? parseLink(object.cta, 'sponsoring.cta') : undefined
   const tiers = requiredObjectArray(object.tiers, 'sponsoring.tiers').map((tier, index) => ({
     name: requiredString(tier.name, `sponsoring.tiers[${index}].name`),
     contribution: requiredString(tier.contribution, `sponsoring.tiers[${index}].contribution`),
@@ -164,6 +175,8 @@ function parseSponsoringContent(value: unknown): SponsoringContent {
     sectionId: requiredString(object.sectionId, 'sponsoring.sectionId'),
     title: requiredString(object.title, 'sponsoring.title'),
     intro: requiredString(object.intro, 'sponsoring.intro'),
+    note: optionalString(object.note),
+    cta,
     tableHeaders: {
       package: requiredString(tableHeaders.package, 'sponsoring.tableHeaders.package'),
       contribution: requiredString(tableHeaders.contribution, 'sponsoring.tableHeaders.contribution'),
@@ -185,12 +198,16 @@ function parseSponsorsContent(value: unknown): SponsorsContent {
   return {
     sectionId: requiredString(object.sectionId, 'sponsors.sectionId'),
     title: requiredString(object.title, 'sponsors.title'),
+    subtitle: optionalString(object.subtitle),
     items
   }
 }
 
 function parseContactContent(value: unknown): ContactContent {
   const object = requiredObject(value, 'contact')
+  const introParagraphs = object.introParagraphs
+    ? requiredStringArray(object.introParagraphs, 'contact.introParagraphs')
+    : undefined
   const items = requiredObjectArray(object.items, 'contact.items').map((item, index) => ({
     label: requiredString(item.label, `contact.items[${index}].label`),
     value: requiredString(item.value, `contact.items[${index}].value`),
@@ -200,6 +217,7 @@ function parseContactContent(value: unknown): ContactContent {
   return {
     sectionId: requiredString(object.sectionId, 'contact.sectionId'),
     title: requiredString(object.title, 'contact.title'),
+    introParagraphs,
     items
   }
 }

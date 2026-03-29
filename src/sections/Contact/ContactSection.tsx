@@ -9,6 +9,12 @@ interface ContactSectionProps {
 export function ContactSection({ content }: ContactSectionProps) {
   return (
     <SectionBlock id={content.sectionId} title={content.title} className={styles.section}>
+      {content.introParagraphs?.map((paragraph, index) => (
+        <p key={`${content.sectionId}-intro-${index}`} className={styles.introParagraph}>
+          {paragraph}
+        </p>
+      ))}
+
       <div className={styles.cards}>
         {content.items.map((item) => (
           <a key={`${item.label}-${item.href}`} href={item.href} className={styles.card}>

@@ -7,16 +7,31 @@
   margin: 0;
 }
 
+.note {
+  margin: 0;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid #ece7f2;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
+  min-width: 760px;
+}
+
+.table th {
+  background: var(--color-accent-soft);
+  font-weight: 700;
 }
 
 .table th,
 .cell {
-  border: 1px solid #efefef;
+  border: 1px solid #ece7f2;
   padding: var(--space-2) var(--space-4);
   text-align: left;
   vertical-align: top;
@@ -25,4 +40,15 @@
 .benefitsList {
   margin: 0;
   padding-left: 1.1rem;
+}
+
+.ctaLink {
+  justify-self: start;
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid #cfb5e5;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--color-text);
+  background: #ffffff;
 }

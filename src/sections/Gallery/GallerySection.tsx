@@ -10,6 +10,8 @@ interface GallerySectionProps {
 export function GallerySection({ content }: GallerySectionProps) {
   return (
     <SectionBlock id={content.sectionId} title={content.title} className={styles.section}>
+      {content.intro ? <p className={styles.intro}>{content.intro}</p> : null}
+
       <div className={styles.galleryGrid}>
         {content.images.map((image) => (
           <figure key={`${image.src}-${image.alt}`} className={styles.figure}>

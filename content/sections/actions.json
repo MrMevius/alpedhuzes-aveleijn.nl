@@ -1,33 +1,34 @@
 {
   "sectionId": "actions",
   "title": "Acties",
+  "notice": "Er komen nog meer acties aan. Houd deze pagina in de gaten of volg ons op social media.",
   "items": [
     {
-      "title": "Loempia actie",
-      "description": "Heerlijke loempia's ten bate van Alpe d'HuZes Aveleijn.",
+      "title": "Loempia-actie",
+      "description": "Bestel zelfgemaakte kiploempia’s voor € 1,50 per stuk. Je hoeft ze thuis alleen nog maar te frituren. Voor bestellingen van loempia’s kun je contact opnemen met Tim.",
       "image": {
         "src": "/assets/images/actions-loempia.jpg",
-        "alt": "Loempia actie"
+        "alt": ""
       },
       "meta": "€ 1,50 per stuk"
     },
     {
-      "title": "Tiramisu actie",
-      "description": "Bestel tiramisu en steun onze teams.",
+      "title": "Tiramisu-actie voor de feestdagen",
+      "description": "Voor de feestdagen kun je tot en met 15 december zelfgemaakte tiramisu (voor 6–8 personen) bestellen voor slechts € 12,50. Neem voor bestellingen contact op met Cindy via ad6.cindy@gmail.com.",
       "image": {
         "src": "/assets/images/actions-tiramisu.jpg",
-        "alt": "Tiramisu actie"
+        "alt": ""
       },
-      "meta": "€ 10,- per schaal"
+      "meta": "€ 12,50"
     },
     {
       "title": "Bingo",
-      "description": "Gezellige bingo met mooie prijzen.",
+      "description": "We spelen 5 bingorondes voor € 10,-. In de pauze is er een loterij met mooie prijzen. Loten kosten € 2,50 per stuk of 5 voor € 10,-. Bingokaarten zijn op de avond zelf te koop.",
       "image": {
         "src": "/assets/images/actions-bingo.jpg",
-        "alt": "Bingo actie"
+        "alt": ""
       },
-      "meta": "Samen sterk"
+      "meta": "€ 10,-"
     }
   ]
 }

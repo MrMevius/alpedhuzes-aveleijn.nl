@@ -16,6 +16,12 @@ export function AboutSection({ content }: AboutSectionProps) {
           {paragraph}
         </p>
       ))}
+
+      {content.donationLink ? (
+        <p className={styles.paragraph}>
+          <a href={content.donationLink.href}>{content.donationLink.label}</a>
+        </p>
+      ) : null}
     </SectionBlock>
   )
 }

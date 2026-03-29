@@ -1,6 +1,10 @@
 {
   "sectionId": "contact",
   "title": "Contact",
+  "introParagraphs": [
+    "Heb je een vraag, wil je sponsor worden of samen een actie organiseren?",
+    "Laat een bericht achter via het formulier of neem direct contact met ons op."
+  ],
   "items": [
     {
       "label": "E-mail",
@@ -14,7 +18,7 @@
     },
     {
       "label": "Facebook",
-      "value": "Alpe d'HuZes Aveleijn",
+      "value": "Alpe d'HuZes 2026 Team Aveleijn - Samen sterk",
       "href": "https://www.facebook.com/groups/1365168688338882/?ref=share"
     },
     {
@@ -24,7 +28,7 @@
     },
     {
       "label": "LinkedIn",
-      "value": "Alpe d'HuZes Aveleijn",
+      "value": "@Alpe d'HuZes Aveleijn",
       "href": "https://www.linkedin.com/groups/16088160"
     }
   ]

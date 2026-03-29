@@ -1,31 +1,27 @@
 {
   "sectionId": "gallery",
   "title": "Galerij",
+  "intro": "Hier zie je een eerste indruk van onze voorbereidingen, acties en deelname aan Alpe d’HuZes. In de komende periode vullen we de galerij steeds verder aan met nieuwe foto’s.",
   "images": [
     {
-      "src": "/assets/gallery/gallery-01.jpg",
-      "alt": "Actiefoto team",
-      "caption": ""
-    },
-    {
       "src": "/assets/gallery/gallery-02.jpg",
-      "alt": "Fietsers in de bergen",
-      "caption": ""
+      "alt": "",
+      "caption": "BDF"
     },
     {
       "src": "/assets/gallery/gallery-03.jpg",
-      "alt": "Lopers onderweg",
-      "caption": ""
+      "alt": "",
+      "caption": "BDF"
     },
     {
       "src": "/assets/gallery/gallery-04.jpg",
-      "alt": "Finish emotie lopers",
-      "caption": ""
+      "alt": "",
+      "caption": "JPA"
     },
     {
       "src": "/assets/gallery/gallery-05.jpg",
-      "alt": "Finish fietser emotie",
-      "caption": ""
+      "alt": "",
+      "caption": "WK"
     }
   ]
 }

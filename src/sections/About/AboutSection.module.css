@@ -6,9 +6,11 @@
 .image {
   width: 100%;
   max-width: 780px;
-  border-radius: 8px;
+  border-radius: 12px;
+  justify-self: center;
 }
 
 .paragraph {
   margin: 0;
+  max-width: 860px;
 }

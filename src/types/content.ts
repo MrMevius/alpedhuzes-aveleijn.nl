@@ -44,6 +44,7 @@ export interface AboutContent {
   sectionId: string
   title: string
   paragraphs: string[]
+  donationLink?: LinkItem
   image: ImageAsset
 }
 
@@ -51,6 +52,7 @@ export interface FundingContent {
   sectionId: string
   title: string
   paragraphs: string[]
+  links?: LinkItem[]
 }
 
 export interface ActionItem {
@@ -63,6 +65,7 @@ export interface ActionItem {
 export interface ActionsContent {
   sectionId: string
   title: string
+  notice?: string
   items: ActionItem[]
 }
 
@@ -75,6 +78,7 @@ export interface GalleryImage {
 export interface GalleryContent {
   sectionId: string
   title: string
+  intro?: string
   images: GalleryImage[]
 }
 
@@ -88,6 +92,8 @@ export interface SponsoringContent {
   sectionId: string
   title: string
   intro: string
+  note?: string
+  cta?: LinkItem
   tableHeaders: {
     package: string
     contribution: string
@@ -106,6 +112,7 @@ export interface SponsorItem {
 export interface SponsorsContent {
   sectionId: string
   title: string
+  subtitle?: string
   items: SponsorItem[]
 }
 
@@ -118,6 +125,7 @@ export interface ContactItem {
 export interface ContactContent {
   sectionId: string
   title: string
+  introParagraphs?: string[]
   items: ContactItem[]
 }
 

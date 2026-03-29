@@ -1,5 +1,18 @@
 {
   "sectionId": "funding",
   "title": "Geldbesteding",
-  "paragraphs": []
+  "paragraphs": [
+    "Hier gaat jouw donatie heen 100% van de donaties gaat naar het Alpe d’HuZes/KWF-fonds en wordt volledig en zorgvuldig besteed aan wetenschappelijk onderzoek naar kanker én aan initiatieven die de kwaliteit van leven van mensen met kanker verbeteren. Het fonds wordt beheerd door KWF.",
+    "Informatie, over hoe de verdeling is, wat we al bereikt hebben, welke onderzoeken gefinancierd worden en achtergronden kun je vinden op Onze impact - Alpe d’HuZes"
+  ],
+  "links": [
+    {
+      "label": "Alpe d’HuZes/KWF-fonds",
+      "href": "https://www.kwf.nl/help-mee/fietsen/alpe-dhuzes"
+    },
+    {
+      "label": "Onze impact - Alpe d’HuZes",
+      "href": "https://www.opgevenisgeenoptie.nl/impact/"
+    }
+  ]
 }

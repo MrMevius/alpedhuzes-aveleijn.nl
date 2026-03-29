@@ -1,60 +1,61 @@
 {
   "sectionId": "sponsors",
   "title": "Onze sponsors",
+  "subtitle": "Mede mogelijk gemaakt door:",
   "items": [
     {
       "name": "Aveleijn",
       "href": "https://www.aveleijn.nl",
       "logoSrc": "/assets/logos/logo-aveleijn-org.png",
-      "logoAlt": "Logo Aveleijn"
+      "logoAlt": "Aveleijn"
     },
     {
       "name": "N&M Consultancy",
-      "href": "https://bizzy.org/nm-consultancy",
+      "href": "https://n-m-consultancy.nl",
       "logoSrc": "/assets/logos/logo-nm-consultancy.png",
-      "logoAlt": "Logo N&M Consultancy"
+      "logoAlt": "N&M Consultancy"
     },
     {
-      "name": "Brookhuis",
-      "href": "https://www.brookhuis.com",
+      "name": "Brookhuisgroep",
+      "href": "https://www.brookhuisgroep.nl/",
       "logoSrc": "/assets/logos/sponsor-brookhuis.png",
-      "logoAlt": "Logo Brookhuis"
+      "logoAlt": "Brookhuisgroep"
     },
     {
-      "name": "Sponsor download",
-      "href": "#",
+      "name": "Broekhuis Almelo",
+      "href": "https://broekhuis.nl/vestigingen/almelo/peugeot?utm_source=google&utm_medium=cpc&utm_campaign=Stellantis%20-%20Peugeot%20-%20Broekhuis%20-%20Regionaal&utm_content=Peugeot%20Almelo&utm_ad=743867454866&utm_term=peugeot%20almelo&matchtype=e&device=c&GeoLoc=9103108&placement=&network=g&campaign_id=22409398450&adset_id=178059344072&ad_id=743867454866&gad_source=1&gad_campaignid=22409398450&gclid=Cj0KCQiAxonKBhC1ARIsAIHq_lsnjK9ny7zTWXhuIlcdf2GFOEW8v4Oo-POAPMqnKLG22wptJqOdagwaAjoQEALw_wcB",
       "logoSrc": "/assets/logos/sponsor-download.png",
-      "logoAlt": "Sponsor logo"
+      "logoAlt": "Broekhuis Almelo"
     },
     {
-      "name": "TSBV",
-      "href": "#",
+      "name": "Ter Steege Bouw Vastgoed",
+      "href": "https://www.tsbouwvastgoed.nl/",
       "logoSrc": "/assets/logos/sponsor-tsbv.jpg",
-      "logoAlt": "Logo TSBV"
+      "logoAlt": "Ter Steege Bouw Vastgoed"
     },
     {
       "name": "Blue-Y",
-      "href": "#",
+      "href": "https://blue-y.com/",
       "logoSrc": "/assets/logos/sponsor-bluey.png",
-      "logoAlt": "Logo Blue-Y"
+      "logoAlt": "Blue-Y | Een frisse kijk op zorg"
     },
     {
       "name": "iTypical",
-      "href": "#",
+      "href": "https://itypical.nl/",
       "logoSrc": "/assets/logos/sponsor-itypical.png",
-      "logoAlt": "Logo iTypical"
+      "logoAlt": "iTypical - AFAS implementeren en optimaliseren"
     },
     {
       "name": "Fabri",
-      "href": "#",
+      "href": "https://fabri.nl/",
       "logoSrc": "/assets/logos/sponsor-fabri.png",
-      "logoAlt": "Logo Fabri"
+      "logoAlt": "Fabri – Wij maken u zichtbaar • Snel & persoonlijk"
     },
     {
       "name": "De Visionair",
-      "href": "#",
+      "href": "https://www.devisionair.nl",
       "logoSrc": "/assets/logos/sponsor-visionair.jpg",
-      "logoAlt": "Logo De Visionair"
+      "logoAlt": "De Visionair"
     }
   ]
 }

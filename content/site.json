@@ -1,7 +1,7 @@
 {
-  "siteName": "Alpe d'HuZes Aveleijn",
+  "siteName": "alpedhuzes-aveleijn.nl",
   "language": "nl-NL",
-  "phase": "phase-1",
+  "phase": "phase-2",
   "footer": {
     "navigationAriaLabel": "Footer menu",
     "menu": [
@@ -14,6 +14,6 @@
         "href": "#contact"
       }
     ],
-    "copyright": "Website door Tivius sponsored by N&M Consultancy"
+    "copyright": "© 2025 alpedhuzes-aveleijn.nl – Website door Tivius sponsored by N&M Consultancy"
   }
 }

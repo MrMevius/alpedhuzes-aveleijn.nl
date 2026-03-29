@@ -13,7 +13,8 @@
 ## Results by area
 
 ### Global layout
-- ✅ `.container` uses fluid width (`min(100% - 2rem, var(--container-width))`).
+- ✅ `.container` uses fluid width (`min(100% - 2.25rem, var(--container-width))`).
+- ✅ At `max-width: 900px`, container narrows to `min(100% - 1.75rem, var(--container-width))`.
 - ✅ Sections stack vertically and maintain readable spacing.
 
 ### Hero

@@ -4,6 +4,10 @@
   "intro": "Hier zie je een eerste indruk van onze voorbereidingen, acties en deelname aan Alpe d’HuZes. In de komende periode vullen we de galerij steeds verder aan met nieuwe foto’s.",
   "images": [
     {
+      "src": "/assets/gallery/gallery-01.jpg",
+      "alt": ""
+    },
+    {
       "src": "/assets/gallery/gallery-02.jpg",
       "alt": "",
       "caption": "BDF"

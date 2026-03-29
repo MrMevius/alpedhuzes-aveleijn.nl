@@ -5,8 +5,6 @@ import { InMemoryTtlStore } from './cacheStore.js'
 import type { ProgressApiResponse, ProgressSourceResult } from '../types/progress.js'
 
 export const PROGRESS_CACHE_TTL_MS = 60 * 60 * 1000
-export const PROGRESS_CACHE_TTL_SECONDS = 60 * 60
-const DEFAULT_GOAL_EUR = 66666
 
 const defaultFundraiserUrls = [
   'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/Aveleijnsamensterk1',
@@ -36,10 +34,10 @@ function readGoalEurFromContent(): number {
       return parsed.goalEur
     }
   } catch {
-    // Intentional fallback to default goal when content file unavailable.
+    // Intentional fallback to zero when content file unavailable.
   }
 
-  return DEFAULT_GOAL_EUR
+  return 0
 }
 
 type ScrapeAmountFn = (url: string) => Promise<number>
@@ -68,54 +66,64 @@ export interface ProgressService {
 
 function buildResponse(
   nowIso: string,
-  goalEur: number,
+  goal: number,
   sources: ProgressSourceResult[],
-  lastSuccessAt: string | null,
   stale: boolean,
   error?: string
 ): ProgressApiResponse {
-  const totalEur = Number(sources.reduce((sum, source) => sum + source.amountEur, 0).toFixed(2))
-  const totalEurRounded = Math.round(totalEur)
-  const denominator = goalEur > 0 ? goalEur : 1
-  const percentage = clampPercentage(Math.round((totalEur / denominator) * 100))
+  const totalRaised = Number(sources.reduce((sum, source) => sum + source.amountRaised, 0).toFixed(2))
+  const denominator = goal > 0 ? goal : 1
+  const percentage = clampPercentage(Math.round((totalRaised / denominator) * 100))
 
   return {
-    totalEur,
-    totalEurRounded,
-    goalEur,
+    totalRaised,
+    goal,
     percentage,
-    isStale: stale,
-    updatedAt: nowIso,
-    lastSuccessAt,
-    cacheTtlSeconds: PROGRESS_CACHE_TTL_SECONDS,
+    lastUpdated: nowIso,
     sources,
+    cacheAgeSeconds: 0,
+    isStale: stale,
     ...(error ? { error } : {})
   }
 }
 
 function buildEmptyFallback(
   nowIso: string,
-  goalEur: number,
+  goal: number,
   fundraiserUrls: string[],
-  lastSuccessAt: string | null,
   error: string
 ): ProgressApiResponse {
   return {
-    totalEur: 0,
-    totalEurRounded: 0,
-    goalEur,
+    totalRaised: 0,
+    goal,
     percentage: 0,
-    isStale: true,
-    updatedAt: nowIso,
-    lastSuccessAt,
-    cacheTtlSeconds: PROGRESS_CACHE_TTL_SECONDS,
+    lastUpdated: nowIso,
     sources: fundraiserUrls.map((url) => ({
       url,
-      amountEur: 0,
+      amountRaised: 0,
       status: 'error' as const,
       error: 'No cached value available'
     })),
+    cacheAgeSeconds: 0,
+    isStale: true,
     error
+  }
+}
+
+function calculateCacheAgeSeconds(lastUpdatedIso: string, nowMs: number): number {
+  const lastUpdatedMs = Date.parse(lastUpdatedIso)
+
+  if (Number.isNaN(lastUpdatedMs)) {
+    return 0
+  }
+
+  return Math.max(0, Math.floor((nowMs - lastUpdatedMs) / 1000))
+}
+
+function withCacheAge(payload: ProgressApiResponse, nowMs: number): ProgressApiResponse {
+  return {
+    ...payload,
+    cacheAgeSeconds: calculateCacheAgeSeconds(payload.lastUpdated, nowMs)
   }
 }
 
@@ -126,17 +134,15 @@ export function createProgressService(customDeps: Partial<ProgressServiceDeps> =
     fundraiserUrls: customDeps.fundraiserUrls ?? [...defaultDeps.fundraiserUrls]
   }
 
-  let lastSuccessAt: string | null = null
-
   async function scrapeAllSources(): Promise<ProgressSourceResult[]> {
     const results = await Promise.all(
       deps.fundraiserUrls.map(async (url) => {
         try {
-          const amountEur = await deps.scrapeAmountEur(url)
-          return { url, amountEur, status: 'ok' as const }
+          const amountRaised = await deps.scrapeAmountEur(url)
+          return { url, amountRaised, status: 'ok' as const }
         } catch (error) {
           const message = error instanceof Error ? error.message : 'Unknown scrape error'
-          return { url, amountEur: 0, status: 'error' as const, error: message }
+          return { url, amountRaised: 0, status: 'error' as const, error: message }
         }
       })
     )
@@ -155,16 +161,15 @@ export function createProgressService(customDeps: Partial<ProgressServiceDeps> =
 
     const cached = deps.cache.get(nowMs)
     if (cached) {
-      return cached
+      return withCacheAge(cached, nowMs)
     }
 
-    const goalEur = deps.readGoalEur()
+    const goal = deps.readGoalEur()
 
     try {
       const sources = await scrapeAllSources()
-      lastSuccessAt = nowIso
 
-      const freshResponse = buildResponse(nowIso, goalEur, sources, lastSuccessAt, false)
+      const freshResponse = buildResponse(nowIso, goal, sources, false)
       deps.cache.set(freshResponse, PROGRESS_CACHE_TTL_MS, nowMs)
 
       return freshResponse
@@ -173,15 +178,17 @@ export function createProgressService(customDeps: Partial<ProgressServiceDeps> =
       const lastKnownGood = deps.cache.getLastValue()
 
       if (lastKnownGood) {
-        return {
+        return withCacheAge(
+          {
           ...lastKnownGood,
           isStale: true,
-          updatedAt: nowIso,
           error: message
-        }
+          },
+          nowMs
+        )
       }
 
-      return buildEmptyFallback(nowIso, goalEur, deps.fundraiserUrls, lastSuccessAt, message)
+      return buildEmptyFallback(nowIso, goal, deps.fundraiserUrls, message)
     }
   }
 

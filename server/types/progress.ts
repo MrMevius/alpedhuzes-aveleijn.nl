@@ -1,19 +1,17 @@
 export interface ProgressSourceResult {
   url: string
-  amountEur: number
+  amountRaised: number
   status: 'ok' | 'error'
   error?: string
 }
 
 export interface ProgressApiResponse {
-  totalEur: number
-  totalEurRounded: number
-  goalEur: number
+  totalRaised: number
+  goal: number
   percentage: number
-  isStale: boolean
-  updatedAt: string
-  lastSuccessAt: string | null
-  cacheTtlSeconds: number
+  lastUpdated: string
   sources: ProgressSourceResult[]
+  cacheAgeSeconds: number
+  isStale: boolean
   error?: string
 }

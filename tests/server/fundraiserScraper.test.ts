@@ -23,6 +23,13 @@ describe('parseFundraiserAmountEur', () => {
     expect(value).toBe(20246)
   })
 
+  it('parses amount from label-context fallback pattern', () => {
+    const html = readFixture('fundraiser-labelContext.html')
+    const value = parseFundraiserAmountEur(html)
+
+    expect(value).toBe(12345.67)
+  })
+
   it('throws for html without supported amount markers', () => {
     expect(() => parseFundraiserAmountEur('<html><body>No amounts</body></html>')).toThrow(
       'Unable to find fundraiser amount in HTML'

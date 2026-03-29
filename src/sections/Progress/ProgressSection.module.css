@@ -35,6 +35,12 @@
   font-size: 0.95rem;
 }
 
+.error {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #a12f2f;
+}
+
 @media (max-width: 640px) {
   .section {
     padding: var(--space-4);

@@ -21,9 +21,10 @@ describe('progress service caching and fallback', () => {
     now += 1_000
     const second = await service.getProgressData()
 
-    expect(first.updatedAt).toBe(second.updatedAt)
-    expect(second.totalEur).toBe(100)
+    expect(first.lastUpdated).toBe(second.lastUpdated)
+    expect(second.totalRaised).toBe(100)
     expect(second.isStale).toBe(false)
+    expect(second.cacheAgeSeconds).toBe(1)
   })
 
   it('serves last known good value as stale when refresh fails after ttl', async () => {
@@ -45,16 +46,17 @@ describe('progress service caching and fallback', () => {
     })
 
     const fresh = await service.getProgressData()
-    expect(fresh.totalEur).toBe(100)
+    expect(fresh.totalRaised).toBe(100)
     expect(fresh.isStale).toBe(false)
 
     shouldFail = true
     now += PROGRESS_CACHE_TTL_MS + 1
     const stale = await service.getProgressData()
 
-    expect(stale.totalEur).toBe(100)
+    expect(stale.totalRaised).toBe(100)
     expect(stale.isStale).toBe(true)
     expect(stale.error).toContain('Scraping failed for all fundraiser sources')
+    expect(stale.cacheAgeSeconds).toBe(3600)
   })
 
   it('returns empty stale fallback when no cached value exists and scraping fails', async () => {
@@ -70,8 +72,8 @@ describe('progress service caching and fallback', () => {
 
     const result = await service.getProgressData()
 
-    expect(result.totalEur).toBe(0)
-    expect(result.goalEur).toBe(500)
+    expect(result.totalRaised).toBe(0)
+    expect(result.goal).toBe(500)
     expect(result.isStale).toBe(true)
     expect(result.sources[0]?.status).toBe('error')
   })

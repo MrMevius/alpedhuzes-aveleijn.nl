@@ -8,8 +8,11 @@ interface ProgressSectionProps {
 }
 
 export function ProgressSection({ content }: ProgressSectionProps) {
-  const [totalEurRounded, setTotalEurRounded] = useState(0)
+  const [totalRaised, setTotalRaised] = useState(0)
+  const [goal, setGoal] = useState(content.goalEur)
   const [isStale, setIsStale] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
     let isMounted = true
@@ -19,11 +22,18 @@ export function ProgressSection({ content }: ProgressSectionProps) {
         const response = await fetch('/api/progress')
 
         if (!response.ok) {
+          if (isMounted) {
+            setHasError(true)
+            setIsStale(true)
+            setIsLoading(false)
+          }
+
           return
         }
 
         const payload = (await response.json()) as {
-          totalEurRounded?: number
+          totalRaised?: number
+          goal?: number
           isStale?: boolean
         }
 
@@ -31,12 +41,17 @@ export function ProgressSection({ content }: ProgressSectionProps) {
           return
         }
 
-        setTotalEurRounded(typeof payload.totalEurRounded === 'number' ? payload.totalEurRounded : 0)
+        setTotalRaised(typeof payload.totalRaised === 'number' ? payload.totalRaised : 0)
+        setGoal(typeof payload.goal === 'number' ? payload.goal : content.goalEur)
         setIsStale(Boolean(payload.isStale))
+        setHasError(false)
+        setIsLoading(false)
       } catch {
         if (isMounted) {
-          setTotalEurRounded(0)
+          setTotalRaised(0)
           setIsStale(true)
+          setHasError(true)
+          setIsLoading(false)
         }
       }
     }
@@ -49,12 +64,14 @@ export function ProgressSection({ content }: ProgressSectionProps) {
   }, [])
 
   const percentage = useMemo(() => {
-    if (content.goalEur <= 0) {
+    if (goal <= 0) {
       return 0
     }
 
-    return Math.max(0, Math.min(100, Math.round((totalEurRounded / content.goalEur) * 100)))
-  }, [content.goalEur, totalEurRounded])
+    return Math.max(0, Math.min(100, Math.round((totalRaised / goal) * 100)))
+  }, [goal, totalRaised])
+
+  const totalRaisedRounded = Math.round(totalRaised)
 
   return (
     <SectionBlock id={content.sectionId} title={content.title} className={styles.section}>
@@ -63,10 +80,15 @@ export function ProgressSection({ content }: ProgressSectionProps) {
       </div>
 
       <p className={styles.metric}>
-        {content.labels.totalRaised}: € {totalEurRounded.toLocaleString('nl-NL')}
+        {content.labels.totalRaised}: € {totalRaisedRounded.toLocaleString('nl-NL')}
       </p>
-      <p className={styles.metric}>{content.labels.teamGoal}: € {content.goalEur.toLocaleString('nl-NL')}</p>
-      {isStale ? <p className={styles.status}>Laatste bekende tussenstand getoond.</p> : null}
+      <p className={styles.metric}>{content.labels.teamGoal}: € {goal.toLocaleString('nl-NL')}</p>
+
+      {isLoading ? <p className={styles.status}>Tussenstand laden…</p> : null}
+      {!isLoading && hasError ? (
+        <p className={styles.error}>Live tussenstand tijdelijk niet beschikbaar. Laatste lokale fallback wordt getoond.</p>
+      ) : null}
+      {!isLoading && isStale && !hasError ? <p className={styles.status}>Laatste bekende tussenstand getoond.</p> : null}
     </SectionBlock>
   )
 }

@@ -13,22 +13,13 @@
       "meta": "€ 1,50 per stuk"
     },
     {
-      "title": "Tiramisu-actie voor de feestdagen",
-      "description": "Voor de feestdagen kun je tot en met 15 december zelfgemaakte tiramisu (voor 6–8 personen) bestellen voor slechts € 12,50. Neem voor bestellingen contact op met Cindy via ad6.cindy@gmail.com.",
+      "title": "Flyer Bingo 2 april",
+      "description": "Bekijk de flyer voor alle informatie over de bingo op 2 april.",
       "image": {
-        "src": "/assets/images/actions-tiramisu.jpg",
+        "src": "/assets/gallery/Flyer Bingo 2 april.png",
         "alt": ""
       },
-      "meta": "€ 12,50"
-    },
-    {
-      "title": "Bingo",
-      "description": "We spelen 5 bingorondes voor € 10,-. In de pauze is er een loterij met mooie prijzen. Loten kosten € 2,50 per stuk of 5 voor € 10,-. Bingokaarten zijn op de avond zelf te koop.",
-      "image": {
-        "src": "/assets/images/actions-bingo.jpg",
-        "alt": ""
-      },
-      "meta": "€ 10,-"
+      "meta": "2 april"
     }
   ]
 }

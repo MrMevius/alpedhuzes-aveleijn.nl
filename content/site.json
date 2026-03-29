@@ -1,0 +1,19 @@
+{
+  "siteName": "Alpe d'HuZes Aveleijn",
+  "language": "nl-NL",
+  "phase": "phase-1",
+  "footer": {
+    "navigationAriaLabel": "Footer menu",
+    "menu": [
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ],
+    "copyright": "Website door Tivius sponsored by N&M Consultancy"
+  }
+}

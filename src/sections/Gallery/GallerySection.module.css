@@ -1,0 +1,26 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.figure {
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.caption {
+  margin-top: var(--space-2);
+  font-size: 0.9rem;
+}

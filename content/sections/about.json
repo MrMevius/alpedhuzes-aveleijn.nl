@@ -1,0 +1,12 @@
+{
+  "sectionId": "about",
+  "title": "Wie zijn wij",
+  "paragraphs": [
+    "Wij zijn een betrokken team vanuit Aveleijn dat samen in actie komt voor Alpe d'HuZes.",
+    "Met sportieve uitdagingen en acties willen wij bijdragen aan een wereld waarin je niet meer doodgaat aan kanker."
+  ],
+  "image": {
+    "src": "/assets/images/about-team-ejb2683.jpg",
+    "alt": "Team Aveleijn in actie"
+  }
+}

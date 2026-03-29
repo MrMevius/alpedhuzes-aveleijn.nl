@@ -1,0 +1,9 @@
+.sectionBlock {
+  padding-block: var(--space-6);
+  border-bottom: 1px solid #efefef;
+}
+
+.title {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+}

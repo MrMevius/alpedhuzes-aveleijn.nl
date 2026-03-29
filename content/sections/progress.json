@@ -1,0 +1,9 @@
+{
+  "sectionId": "progress",
+  "title": "Tussenstand",
+  "goalEur": 66666,
+  "labels": {
+    "totalRaised": "Totaal opgehaald",
+    "teamGoal": "Teamdoel"
+  }
+}

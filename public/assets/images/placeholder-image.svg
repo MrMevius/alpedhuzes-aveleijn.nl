@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Afbeelding niet beschikbaar</title>
+  <desc id="desc">Plaatsaanduiding wanneer een afbeelding ontbreekt.</desc>
+  <rect width="1200" height="800" fill="#f2f2f2" />
+  <rect x="40" y="40" width="1120" height="720" fill="#e6e6e6" stroke="#cccccc" stroke-width="4" />
+  <path d="M180 600 L420 380 L620 560 L760 430 L1020 680" fill="none" stroke="#b3b3b3" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="420" cy="290" r="70" fill="#c9c9c9" />
+  <text x="600" y="735" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#7a7a7a">Afbeelding niet beschikbaar</text>
+</svg>

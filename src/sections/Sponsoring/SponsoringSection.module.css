@@ -1,0 +1,28 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.intro {
+  margin: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+.table th,
+.cell {
+  border: 1px solid #efefef;
+  padding: var(--space-2) var(--space-4);
+  text-align: left;
+  vertical-align: top;
+}
+
+.benefitsList {
+  margin: 0;
+  padding-left: 1.1rem;
+}

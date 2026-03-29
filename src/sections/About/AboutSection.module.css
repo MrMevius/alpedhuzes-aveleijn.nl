@@ -1,0 +1,14 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.image {
+  width: 100%;
+  max-width: 780px;
+  border-radius: 8px;
+}
+
+.paragraph {
+  margin: 0;
+}

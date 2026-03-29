@@ -1,0 +1,31 @@
+{
+  "sectionId": "contact",
+  "title": "Contact",
+  "items": [
+    {
+      "label": "E-mail",
+      "value": "alpedhuzes@aveleijn.nl",
+      "href": "mailto:alpedhuzes@aveleijn.nl"
+    },
+    {
+      "label": "Telefoon",
+      "value": "+31 6 14326468",
+      "href": "tel:+31614326468"
+    },
+    {
+      "label": "Facebook",
+      "value": "Alpe d'HuZes Aveleijn",
+      "href": "https://www.facebook.com/groups/1365168688338882/?ref=share"
+    },
+    {
+      "label": "Instagram",
+      "value": "@alpedhuzes_aveleijn",
+      "href": "https://www.instagram.com/alpedhuzes_aveleijn?igsh=NXp6N251cmVqMnJm"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "Alpe d'HuZes Aveleijn",
+      "href": "https://www.linkedin.com/groups/16088160"
+    }
+  ]
+}

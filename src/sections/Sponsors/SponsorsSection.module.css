@@ -1,0 +1,26 @@
+.section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.card {
+  display: grid;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid #efefef;
+  border-radius: 8px;
+  padding: var(--space-4);
+}
+
+.logo {
+  width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+}

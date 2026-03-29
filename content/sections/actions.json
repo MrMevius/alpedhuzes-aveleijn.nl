@@ -1,0 +1,33 @@
+{
+  "sectionId": "actions",
+  "title": "Acties",
+  "items": [
+    {
+      "title": "Loempia actie",
+      "description": "Heerlijke loempia's ten bate van Alpe d'HuZes Aveleijn.",
+      "image": {
+        "src": "/assets/images/actions-loempia.jpg",
+        "alt": "Loempia actie"
+      },
+      "meta": "€ 1,50 per stuk"
+    },
+    {
+      "title": "Tiramisu actie",
+      "description": "Bestel tiramisu en steun onze teams.",
+      "image": {
+        "src": "/assets/images/actions-tiramisu.jpg",
+        "alt": "Tiramisu actie"
+      },
+      "meta": "€ 10,- per schaal"
+    },
+    {
+      "title": "Bingo",
+      "description": "Gezellige bingo met mooie prijzen.",
+      "image": {
+        "src": "/assets/images/actions-bingo.jpg",
+        "alt": "Bingo actie"
+      },
+      "meta": "Samen sterk"
+    }
+  ]
+}

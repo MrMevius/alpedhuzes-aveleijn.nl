@@ -1,0 +1,22 @@
+{
+  "sectionId": "hero",
+  "title": "Alpe d'HuZes Aveleijn",
+  "subtitle": "Samen sterk voor Alpe d'HuZes",
+  "description": "Wij zetten ons in om zoveel mogelijk geld op te halen voor onderzoek naar kanker en verbetering van kwaliteit van leven.",
+  "backgroundImage": {
+    "src": "/assets/images/hero-bg-willem-kiers.jpg",
+    "alt": "Teamfoto op de berg"
+  },
+  "logoImage": {
+    "src": "/assets/logos/logo-aveleijn-samen-sterk.png",
+    "alt": "Logo Aveleijn samen sterk"
+  },
+  "primaryCta": {
+    "label": "Steun onze teams",
+    "href": "https://inschrijving.opgevenisgeenoptie.nl/search?kw=aveleijn"
+  },
+  "secondaryCta": {
+    "label": "Word sponor",
+    "href": "mailto:alpedhuzes@aveleijn.nl"
+  }
+}

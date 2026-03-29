@@ -1,0 +1,60 @@
+{
+  "sectionId": "sponsors",
+  "title": "Onze sponsors",
+  "items": [
+    {
+      "name": "Aveleijn",
+      "href": "https://www.aveleijn.nl",
+      "logoSrc": "/assets/logos/logo-aveleijn-org.png",
+      "logoAlt": "Logo Aveleijn"
+    },
+    {
+      "name": "N&M Consultancy",
+      "href": "https://bizzy.org/nm-consultancy",
+      "logoSrc": "/assets/logos/logo-nm-consultancy.png",
+      "logoAlt": "Logo N&M Consultancy"
+    },
+    {
+      "name": "Brookhuis",
+      "href": "https://www.brookhuis.com",
+      "logoSrc": "/assets/logos/sponsor-brookhuis.png",
+      "logoAlt": "Logo Brookhuis"
+    },
+    {
+      "name": "Sponsor download",
+      "href": "#",
+      "logoSrc": "/assets/logos/sponsor-download.png",
+      "logoAlt": "Sponsor logo"
+    },
+    {
+      "name": "TSBV",
+      "href": "#",
+      "logoSrc": "/assets/logos/sponsor-tsbv.jpg",
+      "logoAlt": "Logo TSBV"
+    },
+    {
+      "name": "Blue-Y",
+      "href": "#",
+      "logoSrc": "/assets/logos/sponsor-bluey.png",
+      "logoAlt": "Logo Blue-Y"
+    },
+    {
+      "name": "iTypical",
+      "href": "#",
+      "logoSrc": "/assets/logos/sponsor-itypical.png",
+      "logoAlt": "Logo iTypical"
+    },
+    {
+      "name": "Fabri",
+      "href": "#",
+      "logoSrc": "/assets/logos/sponsor-fabri.png",
+      "logoAlt": "Logo Fabri"
+    },
+    {
+      "name": "De Visionair",
+      "href": "#",
+      "logoSrc": "/assets/logos/sponsor-visionair.jpg",
+      "logoAlt": "Logo De Visionair"
+    }
+  ]
+}

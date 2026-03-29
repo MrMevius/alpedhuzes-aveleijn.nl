@@ -1,171 +1,170 @@
 # AGENTS.md
+## Purpose
+This repository contains the code-first rebuild of the Alpe d'HuZes Aveleijn website. The objective is to replace the current WordPress site with a maintainable, modular, single-container application. Agents must optimize for clarity, maintainability, safe iteration, and clean handoff. Visual similarity matters, but architecture quality comes first. Prefer small, reversible changes over large speculative rewrites.
 
-Repository guidance for agentic coding agents operating in this repo.
+## Product goals
+Deliver a full working replacement of the current website.
+Keep the site as a single-page landing page in phase 1.
+Preserve current content and structure unless explicitly asked to change it.
+Keep content easy to edit through files rather than scattered code changes.
+Make each major section independently understandable and independently editable.
+Run the entire application in exactly one Docker container on port 8099.
 
-## 1) Current repository reality
-- Repository currently appears minimal (`README.md` only, plus git metadata).
-- No app runtime, package manager manifest, test framework, linter config, or formatter config was found.
-- No Cursor rules were found in `.cursor/rules/` and no `.cursorrules` file was found.
-- No Copilot rules were found in `.github/copilot-instructions.md`.
-- Therefore, all command guidance below is **discovery-first** and ecosystem-specific fallback guidance.
+## Mandatory stack
+Frontend: React + TypeScript + Vite.
+Backend: Node.js + Express.
+Styling: CSS Modules per section or component.
+Global styling: minimal reset, tokens, layout primitives only.
+Content source: local files under `/content`.
+Assets: local files under `/public/assets`.
+Runtime: single container.
+No WordPress runtime, theme logic, or plugin dependencies.
 
-## 2) Operating mode: plan first, then build
-- Always begin with a brief plan.
-- Before implementing, ask clarifying questions when requirements are ambiguous.
-- **When planning, ask multiple multiple-choice (MC) questions** to reduce ambiguity.
-- Ask the most decision-shaping questions first (scope, constraints, acceptance criteria, risk tolerance).
-- Confirm assumptions explicitly before coding.
+## Hard rules
+Do not introduce WordPress as a dependency.
+Do not split the application into multiple deployable containers.
+Do not add a database in phase 1 unless explicitly requested.
+Do not hotlink site-owned images, logos, or media.
+Do not silently rewrite user-facing content.
+Do not invent missing content unless explicitly asked.
+Do not create hidden coupling between sections.
+Do not hardcode structured content into JSX when it belongs in `/content`.
+Do not mix backend scraping logic into frontend components.
+Do not use over-abstracted architecture for a small website.
 
-### Recommended MC-question pattern
-Use at least 2-4 MC questions when requests are underspecified.
+## Working style
+Make small, reviewable changes.
+Keep diffs easy to understand.
+Prefer explicit code over clever code.
+Prefer boring technology over novel technology.
+Choose the simplest valid approach that preserves flexibility.
+Avoid broad refactors unless they unlock a concrete requirement.
+Do not rename files or folders without a strong reason.
+Preserve working behavior while iterating.
 
-Example MC topics:
-1. Scope: `Minimal fix` / `Full feature` / `Refactor + feature`.
-2. Risk preference: `Safe incremental` / `Balanced` / `Fastest delivery`.
-3. Validation depth: `Changed files only` / `Targeted suite` / `Full suite`.
-4. Backward compatibility: `Strict` / `Best effort` / `Not required`.
+## Planning
+For non-trivial tasks, think in phases before editing files.
+When OpenSpec is available, keep proposal, design, specs, and tasks aligned with implementation.
+Before a large change, identify which files will likely be touched.
+Prefer section-by-section implementation over app-wide rewrites.
+Call out risks early if scraping, asset migration, or visual parity may break.
+If a request conflicts with these rules, choose the safest compliant path and explain the tradeoff.
 
-## 3) Command discovery workflow (mandatory)
-Before running build/lint/test commands:
-1. Detect project type via manifests/configs.
-2. Prefer repository-defined scripts over framework defaults.
-3. Use targeted/single-test commands before full-suite commands.
-4. If multiple frameworks are present, ask user which one is authoritative.
+## Repository structure
+Use a content-driven architecture and keep source code and content clearly separated.
+Default structure:
+`/src/app`
+`/src/components`
+`/src/sections`
+`/src/lib`
+`/src/types`
+`/src/styles`
+`/server`
+`/content`
+`/public/assets`
+`/tests`
+Do not create deep nesting without clear benefit.
+Keep section code under `/src/sections`, reusable UI under `/src/components`, and server-only code under `/server`.
 
-Common manifest detection checklist:
-- Node: `package.json`, `pnpm-lock.yaml`, `yarn.lock`, `package-lock.json`
-- Python: `pyproject.toml`, `poetry.lock`, `requirements.txt`, `pytest.ini`
-- PHP: `composer.json`, `phpunit.xml*`
-- Go: `go.mod`
-- Rust: `Cargo.toml`
-- Java/Kotlin: `pom.xml`, `build.gradle*`
-- .NET: `*.sln`, `*.csproj`
+## Section modularity
+Treat each homepage section as an isolated module.
+Each section should have a dedicated component, a dedicated CSS Module when styling is non-trivial, a typed content shape, and minimal knowledge of other sections.
+Phase 1 sections: Hero, Progress, About, Funding, Actions, Gallery, Sponsoring, Sponsors, Contact, Footer.
+A section may render shared primitives, but must not depend on internal state from another section.
+Avoid cross-section imports unless they are simple shared presentational components.
+Do not let one section read another section's raw content file directly.
 
-## 4) Build / lint / test command guidance
-Because this repo has no detected toolchain yet, use this fallback matrix only after checking manifests.
+## Content rules
+Store editable content in `/content`.
+Prefer one content file per logical section.
+Recommended files:
+`/content/site.json`
+`/content/sections/hero.json`
+`/content/sections/progress.json`
+`/content/sections/about.json`
+`/content/sections/actions.json`
+`/content/sections/gallery.json`
+`/content/sections/sponsoring.json`
+`/content/sections/sponsors.json`
+`/content/sections/contact.json`
+Content files must be human-readable.
+Keep schemas simple and stable.
+Prefer explicit fields over generic arrays of unknown shape.
+Add TypeScript types for every content structure.
+Validate content at load boundaries where practical.
+Do not duplicate the same text in both content files and components.
 
-### Node.js (npm/pnpm/yarn)
-- Install deps:
-  - `npm ci` | `pnpm install --frozen-lockfile` | `yarn install --frozen-lockfile`
-- Build:
-  - `npm run build`
-- Lint:
-  - `npm run lint`
-- Test (all):
-  - `npm test` or `npm run test`
-- Single test:
-  - Jest: `npx jest path/to/file.test.ts -t "test name"`
-  - Vitest: `npx vitest run path/to/file.test.ts -t "test name"`
-  - Via npm script passthrough: `npm test -- path/to/file.test.ts -t "test name"`
+## Asset rules
+All site-owned assets must be local.
+Store assets under `/public/assets`, preferably in `/images`, `/gallery`, and `/logos`.
+Use descriptive filenames when possible.
+Do not leave production code depending on remote WordPress media URLs.
+Remote third-party URLs are acceptable only if explicitly approved and clearly intentional.
+When migrating assets, preserve quality and verify paths.
+If an asset is missing, fail gracefully and note it in the audit output.
 
-### Python
-- Install deps (examples):
-  - `pip install -r requirements.txt`
-  - `poetry install`
-- Lint:
-  - `ruff check .` or `flake8`
-- Format check:
-  - `black --check .`
-- Test (all):
-  - `pytest`
-- Single test:
-  - File: `pytest tests/test_module.py`
-  - Test case: `pytest tests/test_module.py::TestClass::test_name`
-  - Pattern: `pytest -k "name_fragment"`
+## Styling rules
+Prefer CSS Modules for section-level styling.
+Keep global CSS minimal.
+Use global styles only for reset, tokens, base typography, layout helpers, and truly generic utilities.
+Do not dump page-specific CSS into a single global stylesheet.
+Do not use inline styles unless there is a strong reason.
+Keep spacing, radius, colors, shadows, and typography driven by shared tokens where reasonable.
+Aim for clean responsive behavior on desktop, tablet, and mobile.
+Favor maintainable CSS over pixel-perfect hacks.
 
-### PHP
-- Install deps: `composer install`
-- Lint (if configured): `composer run lint`
-- Test (all): `vendor/bin/phpunit`
-- Single test:
-  - File: `vendor/bin/phpunit tests/Feature/ExampleTest.php`
-  - Filter: `vendor/bin/phpunit --filter testMethodName`
+## Backend and API rules
+The backend exists to serve the frontend, provide health checks, and expose the progress API.
+Required endpoints: `GET /api/health` and `GET /api/progress`.
+Keep backend responsibilities narrow.
+Do not turn the Express server into a general CMS.
+Keep scraper logic isolated from route handlers.
+Prefer service modules such as `/server/services/progressService.ts` and `/server/services/fundraiserScraper.ts`.
 
-### Go
-- Build: `go build ./...`
-- Lint: `golangci-lint run` (if configured)
-- Test (all): `go test ./...`
-- Single test:
-  - Package: `go test ./path/to/package`
-  - Single test name: `go test ./... -run TestName`
+## Progress API rules
+The progress section must aggregate fundraising totals from the approved source pages.
+Scraping must happen server-side.
+Cache results for one hour.
+If refresh fails, keep serving the last known good value.
+Never let a scrape failure break the homepage.
+Return structured metadata with the progress response.
+Keep the fundraising goal in local content or config, not embedded in scraper logic.
+Write parsing defensively because third-party HTML can change.
 
-### Rust
-- Build: `cargo build`
-- Lint: `cargo clippy --all-targets --all-features -D warnings`
-- Test (all): `cargo test`
-- Single test:
-  - Name filter: `cargo test test_name_fragment`
-  - Specific test target: `cargo test --test integration_test_name`
+## Testing rules
+Add tests when behavior is fragile, repetitive, or easy to regress.
+At minimum, cover scraping and parsing logic with fixtures.
+Prefer small unit tests over heavy end-to-end setups in phase 1.
+If you fix a bug in parsing or formatting, add or update a test for it.
 
-### Java/Kotlin
-- Gradle build/test: `./gradlew build`, `./gradlew test`
-- Single test (Gradle): `./gradlew test --tests "com.example.ClassName.testMethod"`
-- Maven build/test: `mvn -q verify`, `mvn -q test`
-- Single test (Maven): `mvn -Dtest=ClassName#testMethod test`
+## Docker and runtime rules
+The application must run in one container.
+Port 8099 is mandatory.
+Use a multi-stage Docker build.
+The final image should include everything needed to run the site.
+Do not require extra sidecars or local services in production.
+Keep environment configuration minimal and documented.
+Add a healthcheck when practical.
 
-### .NET
-- Build: `dotnet build`
-- Test (all): `dotnet test`
-- Single test:
-  - `dotnet test --filter "FullyQualifiedName~Namespace.Class.Method"`
+## Performance, accessibility, and resilience
+This is a small content site. Prefer simple performance wins over complex optimization. Optimize images sensibly. Avoid unnecessary client-side state. Prefer server caching over repeated third-party fetches. Load the page fast even if the progress API is stale. Graceful degradation is better than failure.
+Use semantic HTML wherever practical. Use real headings in a logical order. Ensure images have meaningful alt text when appropriate. Buttons and links must be clearly distinguishable. Keep tables accessible and responsive. Do not sacrifice readability for visual effects.
 
-## 5) Code style guidelines (default when repo-specific rules are absent)
+## Change control
+When implementing a feature, state what phase or goal it belongs to.
+When a request is out of scope for phase 1, implement only the safe foundation unless asked otherwise.
+Record intentional deviations from the source site in an audit or parity checklist.
+Keep README current when commands, structure, or runtime behavior changes.
+Do not leave half-migrated patterns in the codebase.
 
-### Imports and dependencies
-- Prefer absolute/aliased imports if already established; otherwise stay consistent with local file patterns.
-- Keep imports grouped: standard library, third-party, internal.
-- Remove unused imports.
-- Avoid introducing new dependencies unless justified in the change spec.
+## Definition of done
+A task is not done unless the code remains modular, readable, and easy to extend.
+A feature is not done if content is still scattered across components.
+A section is not done if it cannot be edited without hunting through unrelated files.
+A scraping task is not done if stale fallback is missing.
+A migration task is not done if remote site-owned assets remain in active use without approval.
 
-### Formatting
-- Respect existing formatter/linter config if present.
-- Do not reformat unrelated files.
-- Keep diffs minimal and scoped to requested changes.
-- Preserve line endings and encoding already used by the repository.
-
-### Types and interfaces
-- Prefer explicit types at module boundaries (public functions, APIs, exported members).
-- Avoid `any`/untyped fallbacks unless unavoidable; document why if used.
-- Model nullable/optional states explicitly.
-- Keep data contracts centralized and reused.
-
-### Naming conventions
-- Use descriptive, intention-revealing names.
-- Follow language conventions (e.g., `camelCase` variables/functions in JS/TS, `PascalCase` types/classes, `snake_case` in Python).
-- Suffix test doubles and fixtures clearly (`Mock`, `Stub`, `Fixture`).
-- Avoid abbreviations unless domain-standard.
-
-### Error handling and logging
-- Fail fast on invalid input at boundaries.
-- Do not swallow exceptions/errors silently.
-- Return/raise typed or structured errors where possible.
-- Log actionable context; never log secrets/tokens/PII.
-- Keep user-facing messages clear; keep internal diagnostics detailed.
-
-### Testing expectations
-- Add or update tests for behavior changes when a test framework exists.
-- Prefer deterministic tests (no time/network randomness without controls).
-- Start with the narrowest relevant tests, then broaden as needed.
-- For bug fixes, include a test that fails before and passes after when feasible.
-
-## 6) Cursor and Copilot rules integration status
-- `.cursor/rules/`: not found
-- `.cursorrules`: not found
-- `.github/copilot-instructions.md`: not found
-
-If any of these files are added later, update this AGENTS.md to incorporate their rules and precedence.
-
-## 7) PR/change hygiene for agents
-- Keep commits focused and atomic.
-- Summarize the "why" in commit messages and PR descriptions.
-- Document verification commands and outcomes.
-- Call out risks, assumptions, and follow-ups explicitly.
-
-## 8) Quick-start checklist for future agents
-1. Read this `AGENTS.md`.
-2. Identify manifests/toolchain.
-3. Ask MC clarifying questions if ambiguity remains.
-4. Confirm acceptance criteria.
-5. Implement minimal scoped changes.
-6. Run targeted tests/lint.
-7. Report what changed + how to verify.
+## Mindset
+Think like a careful maintainer, not a one-shot generator.
+Preserve momentum, but do not rush architecture decisions.
+Choose the clearest path that an engineer can understand a month later and build the website so future changes feel local, safe, and predictable.

@@ -3,3 +3,8 @@ dist/
 dist-server/
 .DS_Store
 npm-debug.log*
+
+# Local environment overrides (keep example tracked)
+.env
+.env.local
+.env.*.local

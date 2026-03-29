@@ -64,6 +64,36 @@ docker build -t alpedhuzes-aveleijn .
 docker run --rm -p 8099:8099 alpedhuzes-aveleijn
 ```
 
+## Docker Compose
+
+Build and start in detached mode:
+
+```bash
+docker compose build --no-cache
+docker compose up -d
+```
+
+Optional overrides via `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Supported variables:
+
+- `HOST_PORT` (default `8099`) - host port mapped to container `8099`
+- `COMPOSE_CONTAINER_NAME` (default `alpedhuzes-aveleijn`)
+- `RESTART_POLICY` (default `unless-stopped`)
+- `NODE_ENV` (default `production`)
+
+Useful runtime commands:
+
+```bash
+docker compose ps
+docker compose logs --no-color --tail=100 app
+docker compose down
+```
+
 Detached sample command:
 
 ```bash

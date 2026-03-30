@@ -44,6 +44,11 @@ npm start
 
 Production app listens on `http://localhost:8099`.
 
+## Public deployment
+
+- The production container is published via **SWAG** (reverse proxy).
+- Public URL: `https://alpedhuzes-aveleijn.nl`.
+
 ## Tests
 
 ```bash

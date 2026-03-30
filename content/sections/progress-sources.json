@@ -1,0 +1,28 @@
+{
+  "sources": [
+    {
+      "id": "aveleijnsamensterk1",
+      "name": "Aveleijn Samen Sterk 1",
+      "type": "team",
+      "url": "https://inschrijving.opgevenisgeenoptie.nl/fundraisers/Aveleijnsamensterk1"
+    },
+    {
+      "id": "aveleijnsamensterk2",
+      "name": "Aveleijn Samen Sterk 2",
+      "type": "team",
+      "url": "https://inschrijving.opgevenisgeenoptie.nl/fundraisers/aveleijnsamensterk2"
+    },
+    {
+      "id": "pienkamp",
+      "name": "Pien Kamp",
+      "type": "individual",
+      "url": "https://inschrijving.opgevenisgeenoptie.nl/fundraisers/pienkamp"
+    },
+    {
+      "id": "gertjanvandeweerdhof",
+      "name": "Gertjan van de Weerdhof",
+      "type": "individual",
+      "url": "https://inschrijving.opgevenisgeenoptie.nl/fundraisers/GertjanvandeWeerdhof"
+    }
+  ]
+}

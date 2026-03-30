@@ -2,14 +2,35 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { scrapeFundraiserAmountEur } from './fundraiserScraper.js'
 import { InMemoryTtlStore } from './cacheStore.js'
-import type { ProgressApiResponse, ProgressSourceResult } from '../types/progress.js'
+import type { ProgressApiResponse, ProgressFundraiserSource, ProgressSourceResult } from '../types/progress.js'
 
 export const PROGRESS_CACHE_TTL_MS = 60 * 60 * 1000
 
-const defaultFundraiserUrls = [
-  'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/Aveleijnsamensterk1',
-  'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/aveleijnsamensterk2',
-  'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/pienkamp'
+const defaultFundraiserSources: ProgressFundraiserSource[] = [
+  {
+    id: 'aveleijnsamensterk1',
+    name: 'Aveleijn Samen Sterk 1',
+    type: 'team',
+    url: 'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/Aveleijnsamensterk1'
+  },
+  {
+    id: 'aveleijnsamensterk2',
+    name: 'Aveleijn Samen Sterk 2',
+    type: 'team',
+    url: 'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/aveleijnsamensterk2'
+  },
+  {
+    id: 'pienkamp',
+    name: 'Pien Kamp',
+    type: 'individual',
+    url: 'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/pienkamp'
+  },
+  {
+    id: 'gertjanvandeweerdhof',
+    name: 'Gertjan van de Weerdhof',
+    type: 'individual',
+    url: 'https://inschrijving.opgevenisgeenoptie.nl/fundraisers/GertjanvandeWeerdhof'
+  }
 ]
 
 function clampPercentage(value: number): number {
@@ -42,8 +63,49 @@ function readGoalEurFromContent(): number {
 
 type ScrapeAmountFn = (url: string) => Promise<number>
 
+function isSourceType(value: unknown): value is ProgressFundraiserSource['type'] {
+  return value === 'team' || value === 'individual'
+}
+
+function readFundraiserSourcesFromContent(): ProgressFundraiserSource[] {
+  try {
+    const sourcesFilePath = path.resolve(process.cwd(), 'content/sections/progress-sources.json')
+    const raw = fs.readFileSync(sourcesFilePath, 'utf-8')
+    const parsed = JSON.parse(raw) as { sources?: unknown }
+
+    if (!Array.isArray(parsed.sources)) {
+      return [...defaultFundraiserSources]
+    }
+
+    const sources = parsed.sources
+      .map((entry) => {
+        if (typeof entry !== 'object' || entry === null) {
+          return null
+        }
+
+        const source = entry as Record<string, unknown>
+        const id = typeof source.id === 'string' ? source.id.trim() : ''
+        const name = typeof source.name === 'string' ? source.name.trim() : ''
+        const type = source.type
+        const url = typeof source.url === 'string' ? source.url.trim() : ''
+
+        if (!id || !name || !isSourceType(type) || !url) {
+          return null
+        }
+
+        return { id, name, type, url }
+      })
+      .filter((source): source is ProgressFundraiserSource => source !== null)
+
+    return sources.length > 0 ? sources : [...defaultFundraiserSources]
+  } catch {
+    // Intentional fallback when source content file unavailable/invalid.
+    return [...defaultFundraiserSources]
+  }
+}
+
 interface ProgressServiceDeps {
-  fundraiserUrls: string[]
+  fundraiserSources: ProgressFundraiserSource[]
   scrapeAmountEur: ScrapeAmountFn
   readGoalEur: () => number
   nowMs: () => number
@@ -51,7 +113,7 @@ interface ProgressServiceDeps {
 }
 
 const defaultDeps: ProgressServiceDeps = {
-  fundraiserUrls: defaultFundraiserUrls,
+  fundraiserSources: readFundraiserSourcesFromContent(),
   scrapeAmountEur: scrapeFundraiserAmountEur,
   readGoalEur: readGoalEurFromContent,
   nowMs: () => Date.now(),
@@ -60,6 +122,7 @@ const defaultDeps: ProgressServiceDeps = {
 
 export interface ProgressService {
   getProgressData: () => Promise<ProgressApiResponse>
+  getFundraiserSources: () => ProgressFundraiserSource[]
   getFundraiserUrls: () => string[]
   getConfiguredGoalEur: () => number
 }
@@ -90,7 +153,7 @@ function buildResponse(
 function buildEmptyFallback(
   nowIso: string,
   goal: number,
-  fundraiserUrls: string[],
+  fundraiserSources: ProgressFundraiserSource[],
   error: string
 ): ProgressApiResponse {
   return {
@@ -98,8 +161,8 @@ function buildEmptyFallback(
     goal,
     percentage: 0,
     lastUpdated: nowIso,
-    sources: fundraiserUrls.map((url) => ({
-      url,
+    sources: fundraiserSources.map((source) => ({
+      ...source,
       amountRaised: 0,
       status: 'error' as const,
       error: 'No cached value available'
@@ -128,21 +191,23 @@ function withCacheAge(payload: ProgressApiResponse, nowMs: number): ProgressApiR
 }
 
 export function createProgressService(customDeps: Partial<ProgressServiceDeps> = {}): ProgressService {
+  const configuredFundraiserSources = customDeps.fundraiserSources ?? [...defaultDeps.fundraiserSources]
+
   const deps = {
     ...defaultDeps,
     ...customDeps,
-    fundraiserUrls: customDeps.fundraiserUrls ?? [...defaultDeps.fundraiserUrls]
+    fundraiserSources: configuredFundraiserSources
   }
 
   async function scrapeAllSources(): Promise<ProgressSourceResult[]> {
     const results = await Promise.all(
-      deps.fundraiserUrls.map(async (url) => {
+      deps.fundraiserSources.map(async (source) => {
         try {
-          const amountRaised = await deps.scrapeAmountEur(url)
-          return { url, amountRaised, status: 'ok' as const }
+          const amountRaised = await deps.scrapeAmountEur(source.url)
+          return { ...source, amountRaised, status: 'ok' as const }
         } catch (error) {
           const message = error instanceof Error ? error.message : 'Unknown scrape error'
-          return { url, amountRaised: 0, status: 'error' as const, error: message }
+          return { ...source, amountRaised: 0, status: 'error' as const, error: message }
         }
       })
     )
@@ -188,13 +253,14 @@ export function createProgressService(customDeps: Partial<ProgressServiceDeps> =
         )
       }
 
-      return buildEmptyFallback(nowIso, goal, deps.fundraiserUrls, message)
+      return buildEmptyFallback(nowIso, goal, deps.fundraiserSources, message)
     }
   }
 
   return {
     getProgressData,
-    getFundraiserUrls: () => [...deps.fundraiserUrls],
+    getFundraiserSources: () => [...deps.fundraiserSources],
+    getFundraiserUrls: () => deps.fundraiserSources.map((source) => source.url),
     getConfiguredGoalEur: () => deps.readGoalEur()
   }
 }
@@ -202,5 +268,6 @@ export function createProgressService(customDeps: Partial<ProgressServiceDeps> =
 const defaultProgressService = createProgressService()
 
 export const getProgressData = defaultProgressService.getProgressData
+export const getFundraiserSources = defaultProgressService.getFundraiserSources
 export const getFundraiserUrls = defaultProgressService.getFundraiserUrls
 export const getConfiguredGoalEur = defaultProgressService.getConfiguredGoalEur

@@ -1,4 +1,14 @@
+export interface ProgressFundraiserSource {
+  id: string
+  name: string
+  type: 'team' | 'individual'
+  url: string
+}
+
 export interface ProgressSourceResult {
+  id: string
+  name: string
+  type: 'team' | 'individual'
   url: string
   amountRaised: number
   status: 'ok' | 'error'

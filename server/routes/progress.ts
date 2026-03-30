@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getConfiguredGoalEur, getFundraiserUrls, getProgressData } from '../services/progressService.js'
+import { getConfiguredGoalEur, getFundraiserSources, getProgressData } from '../services/progressService.js'
 
 export const progressRouter = Router()
 
@@ -15,8 +15,8 @@ progressRouter.get('/', async (_req, res) => {
       goal: getConfiguredGoalEur(),
       percentage: 0,
       lastUpdated: new Date().toISOString(),
-      sources: getFundraiserUrls().map((url) => ({
-        url,
+      sources: getFundraiserSources().map((source) => ({
+        ...source,
         amountRaised: 0,
         status: 'error',
         error: message

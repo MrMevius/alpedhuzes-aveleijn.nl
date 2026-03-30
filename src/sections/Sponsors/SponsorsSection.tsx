@@ -33,7 +33,7 @@ export function SponsorsSection({ content }: SponsorsSectionProps) {
               className={`${styles.logo} ${item.logoSize === 'large' ? styles.logoLarge : ''}`.trim()}
               sizes="(max-width: 700px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
-            <span>{item.name}</span>
+            <span className={styles.name}>{item.name}</span>
           </a>
         ))}
       </div>

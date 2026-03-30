@@ -9,19 +9,23 @@ interface FundingSectionProps {
 export function FundingSection({ content }: FundingSectionProps) {
   return (
     <SectionBlock id={content.sectionId} title={content.title} className={styles.section}>
-      {content.paragraphs.map((paragraph, index) => (
-        <p key={`${content.sectionId}-${index}`} className={styles.paragraph}>
-          {paragraph}
-        </p>
-      ))}
+      <div className={styles.textBlock}>
+        {content.paragraphs.map((paragraph, index) => (
+          <p key={`${content.sectionId}-${index}`} className={styles.paragraph}>
+            {paragraph}
+          </p>
+        ))}
 
-      {content.links?.length
-        ? content.links.map((link) => (
-            <p key={`${link.label}-${link.href}`} className={styles.linkParagraph}>
-              <a href={link.href}>{link.label}</a>
-            </p>
-          ))
-        : null}
+        {content.links?.length ? (
+          <ul className={styles.linkList}>
+            {content.links.map((link) => (
+              <li key={`${link.label}-${link.href}`} className={styles.linkItem}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </SectionBlock>
   )
 }

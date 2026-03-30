@@ -157,11 +157,21 @@ function parseActionsContent(value: unknown): ActionsContent {
 
 function parseGalleryContent(value: unknown): GalleryContent {
   const object = requiredObject(value, 'gallery')
-  const images = requiredObjectArray(object.images, 'gallery.images').map((image, index) => ({
-    src: requiredString(image.src, `gallery.images[${index}].src`),
-    alt: requiredString(image.alt, `gallery.images[${index}].alt`),
-    caption: optionalString(image.caption)
-  }))
+  const images = requiredObjectArray(object.images, 'gallery.images').map((image, index) => {
+    const layoutRaw = image.layout ? requiredString(image.layout, `gallery.images[${index}].layout`) : undefined
+    if (layoutRaw && layoutRaw !== 'default' && layoutRaw !== 'featured') {
+      throw new Error(`gallery.images[${index}].layout must be 'default' or 'featured'`)
+    }
+
+    const layout = layoutRaw as 'default' | 'featured' | undefined
+
+    return {
+      src: requiredString(image.src, `gallery.images[${index}].src`),
+      alt: requiredString(image.alt, `gallery.images[${index}].alt`),
+      caption: optionalString(image.caption),
+      layout
+    }
+  })
 
   return {
     sectionId: requiredString(object.sectionId, 'gallery.sectionId'),

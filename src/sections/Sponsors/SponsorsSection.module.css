@@ -34,8 +34,10 @@
 
 .card {
   display: grid;
+  grid-template-rows: 96px minmax(2.8em, auto);
   gap: var(--space-3);
   justify-items: center;
+  align-items: center;
   text-align: center;
   text-decoration: none;
   color: var(--color-text);
@@ -63,6 +65,13 @@
   max-height: 96px;
 }
 
+.name {
+  width: 100%;
+  align-self: start;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -88,6 +97,7 @@
   .card {
     min-height: 156px;
     padding: var(--space-4);
+    grid-template-rows: 88px minmax(2.8em, auto);
   }
 
   .logo {

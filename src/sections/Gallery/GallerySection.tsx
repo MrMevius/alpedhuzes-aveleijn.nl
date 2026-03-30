@@ -14,12 +14,15 @@ export function GallerySection({ content }: GallerySectionProps) {
 
       <div className={styles.galleryGrid}>
         {content.images.map((image) => (
-          <figure key={`${image.src}-${image.alt}`} className={styles.figure}>
+          <figure
+            key={`${image.src}-${image.alt}`}
+            className={`${styles.figure} ${image.layout === 'featured' ? styles.figureFeatured : ''}`.trim()}
+          >
             <div className={styles.media}>
               <ImageWithFallback
                 src={image.src}
                 alt={image.alt}
-                className={styles.image}
+                className={`${styles.image} ${image.layout === 'featured' ? styles.imageFeatured : ''}`.trim()}
                 sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
               />
               {image.caption ? <figcaption className={styles.caption}>{image.caption}</figcaption> : null}

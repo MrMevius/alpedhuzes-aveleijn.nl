@@ -79,6 +79,7 @@ export interface GalleryImage {
   src: string
   alt: string
   caption?: string
+  layout?: 'default' | 'featured'
 }
 
 export interface GalleryContent {

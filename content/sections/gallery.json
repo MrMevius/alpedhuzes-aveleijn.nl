@@ -5,7 +5,8 @@
   "images": [
     {
       "src": "/assets/gallery/gallery-01.webp",
-      "alt": "Voorbereiding op Alpe d’HuZes door team Aveleijn"
+      "alt": "Voorbereiding op Alpe d’HuZes door team Aveleijn",
+      "layout": "featured"
     },
     {
       "src": "/assets/gallery/gallery-02.webp",

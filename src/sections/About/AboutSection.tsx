@@ -16,17 +16,20 @@ export function AboutSection({ content }: AboutSectionProps) {
         className={styles.image}
         sizes="(max-width: 900px) 100vw, 860px"
       />
-      {content.paragraphs.map((paragraph, index) => (
-        <p key={`${content.sectionId}-${index}`} className={styles.paragraph}>
-          {paragraph}
-        </p>
-      ))}
 
-      {content.donationLink ? (
-        <p className={styles.paragraph}>
-          <a href={content.donationLink.href}>{content.donationLink.label}</a>
-        </p>
-      ) : null}
+      <div className={styles.textBlock}>
+        {content.paragraphs.map((paragraph, index) => (
+          <p key={`${content.sectionId}-${index}`} className={styles.paragraph}>
+            {paragraph}
+          </p>
+        ))}
+
+        {content.donationLink ? (
+          <p className={styles.linkParagraph}>
+            <a href={content.donationLink.href}>{content.donationLink.label}</a>
+          </p>
+        ) : null}
+      </div>
     </SectionBlock>
   )
 }

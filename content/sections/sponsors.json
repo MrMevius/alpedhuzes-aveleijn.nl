@@ -56,6 +56,18 @@
       "href": "https://www.devisionair.nl",
       "logoSrc": "/assets/logos/sponsor-visionair.jpg",
       "logoAlt": "De Visionair"
+    },
+    {
+      "name": "De Bruin Lichttechniek en Decorbouw",
+      "href": "https://www.debruinlichttechniek.nl/",
+      "logoSrc": "/assets/images/De Bruin lichttechniek.png",
+      "logoAlt": "De Bruin Lichttechniek en Decorbouw"
+    },
+    {
+      "name": "Robert Muntel",
+      "href": "https://www.robertmuntel.nl/",
+      "logoSrc": "/assets/images/RM-logo.png",
+      "logoAlt": "Robert Muntel"
     }
   ]
 }

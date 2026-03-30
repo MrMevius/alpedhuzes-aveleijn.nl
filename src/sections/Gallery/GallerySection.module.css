@@ -38,11 +38,13 @@
 
 .figureFeatured {
   grid-column: span 2;
+  padding: var(--space-4);
 }
 
 .imageFeatured {
   object-fit: contain;
   background: #f0f4f9;
+  aspect-ratio: 16 / 10;
 }
 
 .caption {

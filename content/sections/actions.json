@@ -15,6 +15,7 @@
     {
       "title": "Flyer Bingo 2 april",
       "description": "Bekijk de flyer voor alle informatie over de bingo op 2 april.",
+      "imageFit": "contain",
       "image": {
         "src": "/assets/gallery/Flyer Bingo 2 april.png",
         "alt": "Flyer van de bingo-actie op 2 april"

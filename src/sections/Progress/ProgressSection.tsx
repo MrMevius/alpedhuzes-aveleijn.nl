@@ -10,7 +10,6 @@ interface ProgressSectionProps {
 export function ProgressSection({ content }: ProgressSectionProps) {
   const [totalRaised, setTotalRaised] = useState(0)
   const [goal, setGoal] = useState(content.goalEur)
-  const [lastUpdated, setLastUpdated] = useState<string | null>(null)
   const [cacheAgeSeconds, setCacheAgeSeconds] = useState(0)
   const [isStale, setIsStale] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -47,7 +46,6 @@ export function ProgressSection({ content }: ProgressSectionProps) {
 
         setTotalRaised(typeof payload.totalRaised === 'number' ? payload.totalRaised : 0)
         setGoal(typeof payload.goal === 'number' ? payload.goal : content.goalEur)
-        setLastUpdated(typeof payload.lastUpdated === 'string' ? payload.lastUpdated : null)
         setCacheAgeSeconds(typeof payload.cacheAgeSeconds === 'number' ? payload.cacheAgeSeconds : 0)
         setIsStale(Boolean(payload.isStale))
         setHasError(false)
@@ -78,25 +76,6 @@ export function ProgressSection({ content }: ProgressSectionProps) {
 
   const totalRaisedRounded = Math.round(totalRaised)
 
-  const formattedLastUpdated = useMemo(() => {
-    if (!lastUpdated) {
-      return 'Onbekend'
-    }
-
-    const date = new Date(lastUpdated)
-    if (Number.isNaN(date.getTime())) {
-      return 'Onbekend'
-    }
-
-    return new Intl.DateTimeFormat('nl-NL', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date)
-  }, [lastUpdated])
-
   const staleMinutes = Math.floor(cacheAgeSeconds / 60)
 
   return (
@@ -115,10 +94,6 @@ export function ProgressSection({ content }: ProgressSectionProps) {
           <span className={styles.metricValue}>€ {goal.toLocaleString('nl-NL')}</span>
         </p>
       </div>
-
-      <p className={styles.statusMeta}>
-        {content.labels.lastUpdated}: <strong>{formattedLastUpdated}</strong>
-      </p>
 
       {content.primaryCta?.label || content.secondaryCta?.label ? (
         <div className={styles.actions}>

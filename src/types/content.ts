@@ -65,6 +65,7 @@ export interface ActionItem {
   title: string
   description: string
   image: ImageAsset
+  imageFit?: 'cover' | 'contain'
   meta?: string
 }
 

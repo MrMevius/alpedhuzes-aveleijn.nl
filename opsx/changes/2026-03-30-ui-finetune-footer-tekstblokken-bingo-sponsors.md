@@ -43,7 +43,12 @@ De gebruiker vraagt om een gerichte visuele verbeteringsronde op de homepage:
 2. Tekst onder "Wie zijn wij" en "Geldbesteding" staat niet meer als losse, opgeknipte kaartjes maar als professionele, samenhangende tekstblokken.
 3. De bingo-afbeelding (`/assets/gallery/gallery-01.webp`) is visueel ~4x zo groot als standaard galerij-items; overige items behouden hun formaat.
 4. Tekst op de bingo-afbeelding blijft goed leesbaar (niet onnodig weggesneden).
-5. Sponsornamen zijn consistent en netjes uitgelijnd onder de logo’s.
+5. Sponsorlogo’s staan consistent en netjes uitgelijnd in de sponsorcards.
+6. De regel met "Laatst bijgewerkt" wordt niet meer gerenderd in de zichtbare Progress UI.
+7. Footer-links worden op hover/focus niet wit op lichte footer-achtergrond.
+8. Contact-icoontjes zijn zichtbaar prominenter dan voorheen.
+9. In de Sponsors-sectie worden tekstnamen niet meer getoond, waarbij logo’s groter gepresenteerd worden.
+10. In de Acties-sectie wordt de bingo-flyer volledig zichtbaar getoond (geen agressieve crop).
 
 # Testing plan
 - `npm run typecheck`
@@ -91,6 +96,23 @@ Completed
     - Card-layout met vaste logo-zone + naamzone (`grid-template-rows`) voor consistente naamuitlijning.
     - Naamtypografie en line-height afgestemd voor gelijkmatige baseline.
 
+## Iteratie 2 (extra UI-verzoeken)
+- “Laatst bijgewerkt” verwijderd uit de zichtbare UI in `src/sections/Progress/ProgressSection.tsx`.
+- Footer link-hover/focus contrast hersteld in `src/sections/Footer/FooterSection.module.css`:
+  - Copyright-links worden op hover/focus niet langer wit op lichte footer.
+- Contact-icoontjes prominenter gemaakt in `src/sections/Contact/ContactSection.module.css`:
+  - Icoonmaat vergroot en voorzien van subtiele accentdrager.
+- Sponsors aangepast in `src/sections/Sponsors/SponsorsSection.tsx` en `.module.css`:
+  - Tekstnamen onder logo’s verwijderd.
+  - Logozone opgeschaald zodat logo’s groter gepresenteerd worden.
+- Bingo-afbeelding in Galerij nog groter uitgelicht in `src/sections/Gallery/GallerySection.module.css`:
+  - Featured card extra nadruk via ruimere padding en grotere beeldverhouding.
+- Bingo-flyer in Acties volledig tonen, content-gedreven:
+  - `content/sections/actions.json`: bij flyer-item `"imageFit": "contain"` toegevoegd.
+  - `src/types/content.ts`: `ActionItem.imageFit?: 'cover' | 'contain'` toegevoegd.
+  - `src/lib/contentLoader.ts`: validatie/parsing toegevoegd voor `imageFit`.
+  - `src/sections/Actions/ActionsSection.tsx` + `.module.css`: conditionele contain-weergave voor flyer.
+
 # How to verify
 1. Start lokaal:
    - `npm run dev`
@@ -104,9 +126,27 @@ Completed
    - `npm run typecheck`
    - `npm run build`
 
+## Iteratie 2 (extra UI-verzoeken)
+1. Start lokaal:
+   - `npm run dev`
+2. Controleer visueel:
+   - In **Tussenstand** staat geen regel meer met “Laatst bijgewerkt”.
+   - Footer-links blijven op hover/focus donker en leesbaar op de lichte achtergrond.
+   - Contact-icoontjes zijn duidelijk groter/prominenter.
+   - In **Onze sponsors** worden alleen logo’s getoond (geen namen), met zichtbaar grotere logo-presentatie.
+   - In **Galerij** is de uitgelichte bingo-afbeelding nog een stap groter dan voorheen.
+   - In **Acties** wordt de bingo-flyer volledig getoond (geen crop van belangrijke tekst).
+3. Run technische checks:
+   - `npm run typecheck`
+   - `npm run build`
+
 # Verification evidence
 - `npm run typecheck` ✅ geslaagd.
 - `npm run build` ✅ geslaagd (client + server build succesvol).
 - Na extra footer-contrastpass opnieuw uitgevoerd:
   - `npm run typecheck` ✅ geslaagd.
   - `npm run build` ✅ geslaagd (client + server build succesvol).
+
+## Iteratie 2 (extra UI-verzoeken)
+- `npm run typecheck` ✅ geslaagd.
+- `npm run build` ✅ geslaagd (client + server build succesvol).

@@ -25,6 +25,11 @@
   margin-bottom: var(--space-3);
 }
 
+.cardImageContain {
+  object-fit: contain;
+  background: #f3f6f9;
+}
+
 .cardTitle {
   margin: 0 0 var(--space-3);
   line-height: 1.25;

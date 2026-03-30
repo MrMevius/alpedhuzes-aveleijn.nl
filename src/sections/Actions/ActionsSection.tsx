@@ -16,7 +16,7 @@ export function ActionsSection({ content }: ActionsSectionProps) {
             <ImageWithFallback
               src={item.image.src}
               alt={item.image.alt}
-              className={styles.cardImage}
+              className={`${styles.cardImage} ${item.imageFit === 'contain' ? styles.cardImageContain : ''}`.trim()}
               sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <h3 className={styles.cardTitle}>{item.title}</h3>

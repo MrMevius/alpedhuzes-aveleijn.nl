@@ -34,8 +34,8 @@
 
 .card {
   display: grid;
-  grid-template-rows: 96px minmax(2.8em, auto);
-  gap: var(--space-3);
+  place-items: center;
+  gap: var(--space-2);
   justify-items: center;
   align-items: center;
   text-align: center;
@@ -44,7 +44,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   padding: var(--space-5) var(--space-4);
-  min-height: 168px;
+  min-height: 176px;
   background: var(--color-surface);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
@@ -57,19 +57,12 @@
 
 .logo {
   width: 100%;
-  max-height: 74px;
+  max-height: 98px;
   object-fit: contain;
 }
 
 .logoLarge {
-  max-height: 96px;
-}
-
-.name {
-  width: 100%;
-  align-self: start;
-  line-height: 1.35;
-  font-weight: 500;
+  max-height: 118px;
 }
 
 @media (max-width: 1024px) {
@@ -95,16 +88,15 @@
   }
 
   .card {
-    min-height: 156px;
+    min-height: 150px;
     padding: var(--space-4);
-    grid-template-rows: 88px minmax(2.8em, auto);
   }
 
   .logo {
-    max-height: 68px;
+    max-height: 88px;
   }
 
   .logoLarge {
-    max-height: 84px;
+    max-height: 104px;
   }
 }

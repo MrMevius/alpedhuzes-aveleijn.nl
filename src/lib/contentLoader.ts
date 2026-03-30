@@ -140,12 +140,22 @@ function parseFundingContent(value: unknown): FundingContent {
 
 function parseActionsContent(value: unknown): ActionsContent {
   const object = requiredObject(value, 'actions')
-  const items = requiredObjectArray(object.items, 'actions.items').map((item, index) => ({
-    title: requiredString(item.title, `actions.items[${index}].title`),
-    description: requiredString(item.description, `actions.items[${index}].description`),
-    image: parseImage(item.image, `actions.items[${index}].image`),
-    meta: optionalString(item.meta)
-  }))
+  const items = requiredObjectArray(object.items, 'actions.items').map((item, index) => {
+    const imageFitRaw = item.imageFit ? requiredString(item.imageFit, `actions.items[${index}].imageFit`) : undefined
+    if (imageFitRaw && imageFitRaw !== 'cover' && imageFitRaw !== 'contain') {
+      throw new Error(`actions.items[${index}].imageFit must be 'cover' or 'contain'`)
+    }
+
+    const imageFit = imageFitRaw as 'cover' | 'contain' | undefined
+
+    return {
+      title: requiredString(item.title, `actions.items[${index}].title`),
+      description: requiredString(item.description, `actions.items[${index}].description`),
+      image: parseImage(item.image, `actions.items[${index}].image`),
+      imageFit,
+      meta: optionalString(item.meta)
+    }
+  })
 
   return {
     sectionId: requiredString(object.sectionId, 'actions.sectionId'),

@@ -220,8 +220,14 @@ function parseSponsorsContent(value: unknown): SponsorsContent {
   const object = requiredObject(value, 'sponsors')
   const items = requiredObjectArray(object.items, 'sponsors.items').map((item, index) => {
     const logoSizeRaw = item.logoSize ? requiredString(item.logoSize, `sponsors.items[${index}].logoSize`) : undefined
+    const logoScaleRaw = item.logoScale === undefined ? undefined : requiredNumber(item.logoScale, `sponsors.items[${index}].logoScale`)
+
     if (logoSizeRaw && logoSizeRaw !== 'default' && logoSizeRaw !== 'large') {
       throw new Error(`sponsors.items[${index}].logoSize must be 'default' or 'large'`)
+    }
+
+    if (logoScaleRaw !== undefined && logoScaleRaw <= 0) {
+      throw new Error(`sponsors.items[${index}].logoScale must be greater than 0`)
     }
 
     const logoSize = logoSizeRaw as 'default' | 'large' | undefined
@@ -231,7 +237,8 @@ function parseSponsorsContent(value: unknown): SponsorsContent {
       href: requiredString(item.href, `sponsors.items[${index}].href`),
       logoSrc: requiredString(item.logoSrc, `sponsors.items[${index}].logoSrc`),
       logoAlt: requiredString(item.logoAlt, `sponsors.items[${index}].logoAlt`),
-      logoSize
+      logoSize,
+      logoScale: logoScaleRaw
     }
   })
 

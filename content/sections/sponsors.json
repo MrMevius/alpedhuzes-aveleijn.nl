@@ -7,69 +7,78 @@
       "name": "Aveleijn",
       "href": "https://www.aveleijn.nl",
       "logoSrc": "/assets/logos/logo-aveleijn-org.png",
-      "logoAlt": "Aveleijn"
+      "logoAlt": "Aveleijn",
+      "logoScale": 1.0
     },
     {
       "name": "N&M Consultancy",
       "href": "https://n-m-consultancy.nl",
       "logoSrc": "/assets/logos/logo-nm-consultancy.png",
       "logoAlt": "N&M Consultancy",
-      "logoSize": "large"
+      "logoScale": 1.4
     },
     {
       "name": "Brookhuisgroep",
       "href": "https://www.brookhuisgroep.nl/",
       "logoSrc": "/assets/logos/sponsor-brookhuis.png",
-      "logoAlt": "Brookhuisgroep"
+      "logoAlt": "Brookhuisgroep",
+      "logoScale": 1.3
     },
     {
       "name": "Broekhuis Almelo",
       "href": "https://broekhuis.nl/vestigingen/almelo/peugeot?utm_source=google&utm_medium=cpc&utm_campaign=Stellantis%20-%20Peugeot%20-%20Broekhuis%20-%20Regionaal&utm_content=Peugeot%20Almelo&utm_ad=743867454866&utm_term=peugeot%20almelo&matchtype=e&device=c&GeoLoc=9103108&placement=&network=g&campaign_id=22409398450&adset_id=178059344072&ad_id=743867454866&gad_source=1&gad_campaignid=22409398450&gclid=Cj0KCQiAxonKBhC1ARIsAIHq_lsnjK9ny7zTWXhuIlcdf2GFOEW8v4Oo-POAPMqnKLG22wptJqOdagwaAjoQEALw_wcB",
       "logoSrc": "/assets/logos/sponsor-download.png",
-      "logoAlt": "Broekhuis Almelo"
+      "logoAlt": "Broekhuis Almelo",
+      "logoScale": 1.0
     },
     {
       "name": "Ter Steege Bouw Vastgoed",
       "href": "https://www.tsbouwvastgoed.nl/",
       "logoSrc": "/assets/logos/sponsor-tsbv.jpg",
-      "logoAlt": "Ter Steege Bouw Vastgoed"
+      "logoAlt": "Ter Steege Bouw Vastgoed",
+      "logoScale": 1.0
     },
     {
       "name": "Blue-Y",
       "href": "https://blue-y.com/",
       "logoSrc": "/assets/logos/sponsor-bluey.png",
-      "logoAlt": "Blue-Y | Een frisse kijk op zorg"
+      "logoAlt": "Blue-Y | Een frisse kijk op zorg",
+      "logoScale": 0.8
     },
     {
       "name": "iTypical",
       "href": "https://itypical.nl/",
       "logoSrc": "/assets/logos/sponsor-itypical.png",
-      "logoAlt": "iTypical - AFAS implementeren en optimaliseren"
+      "logoAlt": "iTypical - AFAS implementeren en optimaliseren",
+      "logoScale": 0.8
     },
     {
       "name": "Fabri",
       "href": "https://fabri.nl/",
       "logoSrc": "/assets/logos/sponsor-fabri.png",
-      "logoAlt": "Fabri – Wij maken u zichtbaar • Snel & persoonlijk"
+      "logoAlt": "Fabri – Wij maken u zichtbaar • Snel & persoonlijk",
+      "logoScale": 0.6
     },
     {
       "name": "De Visionair",
       "href": "https://www.devisionair.nl",
       "logoSrc": "/assets/logos/sponsor-visionair.jpg",
       "logoAlt": "De Visionair",
-      "logoSize": "large"
+      "logoScale": 1.4
     },
     {
       "name": "De Bruin Lichttechniek en Decorbouw",
       "href": "https://www.debruinlichttechniek.nl/",
       "logoSrc": "/assets/images/De Bruin lichttechniek.png",
-      "logoAlt": "De Bruin Lichttechniek en Decorbouw"
+      "logoAlt": "De Bruin Lichttechniek en Decorbouw",
+      "logoScale": 1.2
     },
     {
       "name": "Robert Muntel",
       "href": "https://www.robertmuntel.nl/",
       "logoSrc": "/assets/images/RM-logo.png",
-      "logoAlt": "Robert Muntel"
+      "logoAlt": "Robert Muntel",
+      "logoScale": 1.0
     }
   ]
 }

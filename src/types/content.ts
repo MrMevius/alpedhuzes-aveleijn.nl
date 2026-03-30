@@ -116,6 +116,7 @@ export interface SponsorItem {
   logoSrc: string
   logoAlt: string
   logoSize?: 'default' | 'large'
+  logoScale?: number
 }
 
 export interface SponsorsContent {

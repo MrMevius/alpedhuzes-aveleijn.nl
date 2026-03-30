@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { SectionBlock } from '../../components/layout/SectionBlock'
 import { ImageWithFallback } from '../../components/ui/ImageWithFallback'
 import type { SponsorsContent } from '../../types/content'
@@ -18,23 +19,28 @@ export function SponsorsSection({ content }: SponsorsSectionProps) {
       </div>
 
       <div className={styles.grid}>
-        {content.items.map((item) => (
-          <a
-            key={item.name}
-            href={item.href}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.card}
-            aria-label={`Bezoek sponsor ${item.name} (opent in nieuw tabblad)`}
-          >
-            <ImageWithFallback
-              src={item.logoSrc}
-              alt={item.logoAlt}
-              className={`${styles.logo} ${item.logoSize === 'large' ? styles.logoLarge : ''}`.trim()}
-              sizes="(max-width: 700px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            />
-          </a>
-        ))}
+        {content.items.map((item) => {
+          const logoScale = item.logoScale ?? (item.logoSize === 'large' ? 1.2 : 1)
+
+          return (
+            <a
+              key={item.name}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.card}
+              style={{ '--logo-scale': String(logoScale) } as CSSProperties}
+              aria-label={`Bezoek sponsor ${item.name} (opent in nieuw tabblad)`}
+            >
+              <ImageWithFallback
+                src={item.logoSrc}
+                alt={item.logoAlt}
+                className={styles.logo}
+                sizes="(max-width: 700px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+            </a>
+          )
+        })}
       </div>
     </SectionBlock>
   )

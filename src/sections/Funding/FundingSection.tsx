@@ -17,7 +17,7 @@ export function FundingSection({ content }: FundingSectionProps) {
 
       {content.links?.length
         ? content.links.map((link) => (
-            <p key={`${link.label}-${link.href}`} className={styles.paragraph}>
+            <p key={`${link.label}-${link.href}`} className={styles.linkParagraph}>
               <a href={link.href}>{link.label}</a>
             </p>
           ))

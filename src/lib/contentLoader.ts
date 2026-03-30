@@ -102,7 +102,6 @@ function parseProgressContent(value: unknown): ProgressContent {
     labels: {
       totalRaised: requiredString(labels.totalRaised, 'progress.labels.totalRaised'),
       teamGoal: requiredString(labels.teamGoal, 'progress.labels.teamGoal'),
-      activeFundraisers: requiredString(labels.activeFundraisers, 'progress.labels.activeFundraisers'),
       lastUpdated: requiredString(labels.lastUpdated, 'progress.labels.lastUpdated')
     },
     primaryCta,
@@ -199,12 +198,22 @@ function parseSponsoringContent(value: unknown): SponsoringContent {
 
 function parseSponsorsContent(value: unknown): SponsorsContent {
   const object = requiredObject(value, 'sponsors')
-  const items = requiredObjectArray(object.items, 'sponsors.items').map((item, index) => ({
-    name: requiredString(item.name, `sponsors.items[${index}].name`),
-    href: requiredString(item.href, `sponsors.items[${index}].href`),
-    logoSrc: requiredString(item.logoSrc, `sponsors.items[${index}].logoSrc`),
-    logoAlt: requiredString(item.logoAlt, `sponsors.items[${index}].logoAlt`)
-  }))
+  const items = requiredObjectArray(object.items, 'sponsors.items').map((item, index) => {
+    const logoSizeRaw = item.logoSize ? requiredString(item.logoSize, `sponsors.items[${index}].logoSize`) : undefined
+    if (logoSizeRaw && logoSizeRaw !== 'default' && logoSizeRaw !== 'large') {
+      throw new Error(`sponsors.items[${index}].logoSize must be 'default' or 'large'`)
+    }
+
+    const logoSize = logoSizeRaw as 'default' | 'large' | undefined
+
+    return {
+      name: requiredString(item.name, `sponsors.items[${index}].name`),
+      href: requiredString(item.href, `sponsors.items[${index}].href`),
+      logoSrc: requiredString(item.logoSrc, `sponsors.items[${index}].logoSrc`),
+      logoAlt: requiredString(item.logoAlt, `sponsors.items[${index}].logoAlt`),
+      logoSize
+    }
+  })
 
   return {
     sectionId: requiredString(object.sectionId, 'sponsors.sectionId'),

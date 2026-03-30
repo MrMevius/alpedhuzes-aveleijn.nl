@@ -40,7 +40,6 @@ export interface ProgressContent {
   labels: {
     totalRaised: string
     teamGoal: string
-    activeFundraisers: string
     lastUpdated: string
   }
   primaryCta?: LinkItem
@@ -114,6 +113,7 @@ export interface SponsorItem {
   href: string
   logoSrc: string
   logoAlt: string
+  logoSize?: 'default' | 'large'
 }
 
 export interface SponsorsContent {

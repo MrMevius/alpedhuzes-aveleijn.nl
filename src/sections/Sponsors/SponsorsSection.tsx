@@ -30,7 +30,7 @@ export function SponsorsSection({ content }: SponsorsSectionProps) {
             <ImageWithFallback
               src={item.logoSrc}
               alt={item.logoAlt}
-              className={styles.logo}
+              className={`${styles.logo} ${item.logoSize === 'large' ? styles.logoLarge : ''}`.trim()}
               sizes="(max-width: 700px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
             <span>{item.name}</span>

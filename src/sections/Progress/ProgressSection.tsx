@@ -10,7 +10,6 @@ interface ProgressSectionProps {
 export function ProgressSection({ content }: ProgressSectionProps) {
   const [totalRaised, setTotalRaised] = useState(0)
   const [goal, setGoal] = useState(content.goalEur)
-  const [activeFundraisers, setActiveFundraisers] = useState(0)
   const [lastUpdated, setLastUpdated] = useState<string | null>(null)
   const [cacheAgeSeconds, setCacheAgeSeconds] = useState(0)
   const [isStale, setIsStale] = useState(false)
@@ -40,7 +39,6 @@ export function ProgressSection({ content }: ProgressSectionProps) {
           lastUpdated?: string
           cacheAgeSeconds?: number
           isStale?: boolean
-          sources?: Array<{ id?: string; status?: 'ok' | 'error' }>
         }
 
         if (!isMounted) {
@@ -51,7 +49,6 @@ export function ProgressSection({ content }: ProgressSectionProps) {
         setGoal(typeof payload.goal === 'number' ? payload.goal : content.goalEur)
         setLastUpdated(typeof payload.lastUpdated === 'string' ? payload.lastUpdated : null)
         setCacheAgeSeconds(typeof payload.cacheAgeSeconds === 'number' ? payload.cacheAgeSeconds : 0)
-        setActiveFundraisers(Array.isArray(payload.sources) ? payload.sources.length : 0)
         setIsStale(Boolean(payload.isStale))
         setHasError(false)
         setIsLoading(false)
@@ -116,10 +113,6 @@ export function ProgressSection({ content }: ProgressSectionProps) {
         <p className={styles.metricCard}>
           <span className={styles.metricLabel}>{content.labels.teamGoal}</span>
           <span className={styles.metricValue}>€ {goal.toLocaleString('nl-NL')}</span>
-        </p>
-        <p className={styles.metricCard}>
-          <span className={styles.metricLabel}>{content.labels.activeFundraisers}</span>
-          <span className={styles.metricValue}>{activeFundraisers.toLocaleString('nl-NL')}</span>
         </p>
       </div>
 

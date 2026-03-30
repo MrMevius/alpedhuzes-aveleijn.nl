@@ -6,9 +6,50 @@
 .paragraph {
   margin: 0;
   max-width: var(--measure-reading);
+  background: #f8fbff;
+  border: 1px solid #dfe8f3;
+  border-left: 4px solid #9fbbe2;
+  border-radius: 12px;
+  padding: var(--space-4) var(--space-5);
+  line-height: 1.72;
 }
 
-.paragraph a {
+.linkParagraph {
+  margin: 0;
+  max-width: var(--measure-reading);
+}
+
+.linkParagraph a {
   color: var(--color-accent);
   font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .section {
+    gap: var(--space-4);
+  }
+
+  .paragraph {
+    border-left-width: 3px;
+    border-radius: 10px;
+    padding: var(--space-3) var(--space-4);
+    line-height: 1.66;
+  }
+
+  .linkParagraph {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .paragraph {
+    padding: 0.72rem 0.9rem;
+    font-size: 0.97rem;
+    line-height: 1.62;
+  }
+
+  .linkParagraph {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
 }

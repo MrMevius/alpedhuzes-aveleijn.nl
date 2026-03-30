@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--space-4);
   text-align: center;
-  background: #2d3438;
+  background: #243036;
   border-radius: var(--radius-card);
   padding: var(--space-10) var(--space-6);
 }
@@ -22,8 +22,11 @@
 }
 
 .menuLink {
-  color: #d9e1e5;
+  color: #eef5f9;
+  font-weight: 500;
+  font-size: 1rem;
   text-decoration: none;
+  text-underline-offset: 3px;
 }
 
 .menuLink:hover,
@@ -33,7 +36,9 @@
 
 .copyright {
   margin: 0;
-  color: #b5bfc5;
+  color: #dbe4ea;
+  font-size: 0.98rem;
+  line-height: 1.8;
 }
 
 .copyright a {
@@ -47,5 +52,31 @@
 }
 
 .separator {
-  color: #b5bfc5;
+  color: #dbe4ea;
+}
+
+@media (max-width: 420px) {
+  .section {
+    padding: var(--space-8) var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .menu {
+    gap: var(--space-3);
+  }
+
+  .menuLink {
+    font-size: 0.96rem;
+  }
+
+  .copyright {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .separator {
+    display: block;
+    margin-top: 0.2rem;
+  }
 }

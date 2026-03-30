@@ -13,7 +13,8 @@
       "name": "N&M Consultancy",
       "href": "https://n-m-consultancy.nl",
       "logoSrc": "/assets/logos/logo-nm-consultancy.png",
-      "logoAlt": "N&M Consultancy"
+      "logoAlt": "N&M Consultancy",
+      "logoSize": "large"
     },
     {
       "name": "Brookhuisgroep",
@@ -55,7 +56,8 @@
       "name": "De Visionair",
       "href": "https://www.devisionair.nl",
       "logoSrc": "/assets/logos/sponsor-visionair.jpg",
-      "logoAlt": "De Visionair"
+      "logoAlt": "De Visionair",
+      "logoSize": "large"
     },
     {
       "name": "De Bruin Lichttechniek en Decorbouw",

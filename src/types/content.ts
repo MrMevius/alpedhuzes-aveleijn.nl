@@ -26,6 +26,7 @@ export interface HeroContent {
   title: string
   subtitle: string
   description: string
+  impactHighlight?: string
   backgroundImage: ImageAsset
   logoImage: ImageAsset
   primaryCta: LinkItem
@@ -39,7 +40,11 @@ export interface ProgressContent {
   labels: {
     totalRaised: string
     teamGoal: string
+    activeFundraisers: string
+    lastUpdated: string
   }
+  primaryCta?: LinkItem
+  secondaryCta?: LinkItem
 }
 
 export interface AboutContent {

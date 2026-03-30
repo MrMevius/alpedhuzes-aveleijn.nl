@@ -4,27 +4,27 @@
   "intro": "Hier zie je een eerste indruk van onze voorbereidingen, acties en deelname aan Alpe d’HuZes. In de komende periode vullen we de galerij steeds verder aan met nieuwe foto’s.",
   "images": [
     {
-      "src": "/assets/gallery/gallery-01.jpg",
-      "alt": ""
+      "src": "/assets/gallery/gallery-01.webp",
+      "alt": "Voorbereiding op Alpe d’HuZes door team Aveleijn"
     },
     {
-      "src": "/assets/gallery/gallery-02.jpg",
-      "alt": "",
+      "src": "/assets/gallery/gallery-02.webp",
+      "alt": "Teamfoto tijdens een voorbereidingsmoment",
       "caption": "BDF"
     },
     {
-      "src": "/assets/gallery/gallery-03.jpg",
-      "alt": "",
+      "src": "/assets/gallery/gallery-03.webp",
+      "alt": "Deelnemers van Aveleijn Samen Sterk in actie",
       "caption": "BDF"
     },
     {
-      "src": "/assets/gallery/gallery-04.jpg",
-      "alt": "",
+      "src": "/assets/gallery/gallery-04.webp",
+      "alt": "Moment uit de Alpe d’HuZes-voorbereiding",
       "caption": "JPA"
     },
     {
-      "src": "/assets/gallery/gallery-05.jpg",
-      "alt": "",
+      "src": "/assets/gallery/gallery-05.webp",
+      "alt": "Teammoment van Aveleijn Samen Sterk",
       "caption": "WK"
     }
   ]

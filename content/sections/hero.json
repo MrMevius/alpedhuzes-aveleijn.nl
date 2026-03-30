@@ -2,9 +2,10 @@
   "sectionId": "hero",
   "title": "Alpe d’HuZes Aveleijn",
   "subtitle": "Samen de berg op voor een leven vol betekenis",
+  "impactHighlight": "Ons teamdoel voor 2026: € 66.666 voor onderzoek naar kanker.",
   "description": "Alpe d’HuZes is een uniek sportief evenement waarbij zoveel mogelijk geld wordt ingezameld voor onderzoek naar kanker en naar verbetering van de kwaliteit van leven van mensen met kanker. De eerste donderdag van juni gaan 5000 deelnemers fietsend, hardlopend of wandelend de Alpe d’Huez op.",
   "backgroundImage": {
-    "src": "/assets/images/hero-bg-willem-kiers.jpg",
+    "src": "/assets/images/hero-bg-willem-kiers.webp",
     "alt": ""
   },
   "logoImage": {
@@ -12,7 +13,7 @@
     "alt": "alpedhuzes-aveleijn.nl"
   },
   "primaryCta": {
-    "label": "Steun onze teams",
+    "label": "Doneer nu",
     "href": "https://inschrijving.opgevenisgeenoptie.nl/search?kw=aveleijn"
   },
   "secondaryCta": {

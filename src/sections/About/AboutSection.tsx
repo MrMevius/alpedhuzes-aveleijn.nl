@@ -10,7 +10,12 @@ interface AboutSectionProps {
 export function AboutSection({ content }: AboutSectionProps) {
   return (
     <SectionBlock id={content.sectionId} title={content.title} className={styles.section}>
-      <ImageWithFallback src={content.image.src} alt={content.image.alt} className={styles.image} />
+      <ImageWithFallback
+        src={content.image.src}
+        alt={content.image.alt}
+        className={styles.image}
+        sizes="(max-width: 900px) 100vw, 860px"
+      />
       {content.paragraphs.map((paragraph, index) => (
         <p key={`${content.sectionId}-${index}`} className={styles.paragraph}>
           {paragraph}

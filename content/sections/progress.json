@@ -4,6 +4,16 @@
   "goalEur": 66666,
   "labels": {
     "totalRaised": "Totaal opgehaald",
-    "teamGoal": "Teamdoel"
+    "teamGoal": "Teamdoel",
+    "activeFundraisers": "Actieve fundraisers",
+    "lastUpdated": "Laatst bijgewerkt"
+  },
+  "primaryCta": {
+    "label": "Doneer nu",
+    "href": "https://inschrijving.opgevenisgeenoptie.nl/search?kw=aveleijn"
+  },
+  "secondaryCta": {
+    "label": "Word sponsor",
+    "href": "mailto:alpedhuzes@aveleijn.nl"
   }
 }

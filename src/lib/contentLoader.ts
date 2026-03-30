@@ -81,6 +81,7 @@ function parseHeroContent(value: unknown): HeroContent {
     title: requiredString(object.title, 'hero.title'),
     subtitle: requiredString(object.subtitle, 'hero.subtitle'),
     description: requiredString(object.description, 'hero.description'),
+    impactHighlight: optionalString(object.impactHighlight),
     backgroundImage: parseImage(object.backgroundImage, 'hero.backgroundImage'),
     logoImage: parseImage(object.logoImage, 'hero.logoImage'),
     primaryCta: parseLink(object.primaryCta, 'hero.primaryCta'),
@@ -91,6 +92,8 @@ function parseHeroContent(value: unknown): HeroContent {
 function parseProgressContent(value: unknown): ProgressContent {
   const object = requiredObject(value, 'progress')
   const labels = requiredObject(object.labels, 'progress.labels')
+  const primaryCta = object.primaryCta ? parseLink(object.primaryCta, 'progress.primaryCta') : undefined
+  const secondaryCta = object.secondaryCta ? parseLink(object.secondaryCta, 'progress.secondaryCta') : undefined
 
   return {
     sectionId: requiredString(object.sectionId, 'progress.sectionId'),
@@ -98,8 +101,12 @@ function parseProgressContent(value: unknown): ProgressContent {
     goalEur: requiredNumber(object.goalEur, 'progress.goalEur'),
     labels: {
       totalRaised: requiredString(labels.totalRaised, 'progress.labels.totalRaised'),
-      teamGoal: requiredString(labels.teamGoal, 'progress.labels.teamGoal')
-    }
+      teamGoal: requiredString(labels.teamGoal, 'progress.labels.teamGoal'),
+      activeFundraisers: requiredString(labels.activeFundraisers, 'progress.labels.activeFundraisers'),
+      lastUpdated: requiredString(labels.lastUpdated, 'progress.labels.lastUpdated')
+    },
+    primaryCta,
+    secondaryCta
   }
 }
 

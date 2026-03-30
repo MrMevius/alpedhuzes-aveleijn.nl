@@ -11,6 +11,7 @@
   --container-width: 1160px;
   --measure-reading: 860px;
   --radius-card: 16px;
+  --radius-card-tight: 12px;
   --radius-pill: 999px;
   --shadow-soft: 0 12px 30px rgba(17, 36, 54, 0.08);
   --shadow-lift: 0 16px 36px rgba(17, 36, 54, 0.14);

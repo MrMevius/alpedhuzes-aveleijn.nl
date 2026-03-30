@@ -3,8 +3,27 @@
   gap: var(--space-5);
 }
 
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
 .subtitle {
   margin: 0;
+}
+
+.countBadge {
+  margin: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid #c8d7ec;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
 }
 
 .grid {
@@ -23,7 +42,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   padding: var(--space-5) var(--space-4);
-  min-height: 156px;
+  min-height: 168px;
   background: var(--color-surface);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }

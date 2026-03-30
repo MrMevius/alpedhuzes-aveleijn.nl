@@ -3,14 +3,15 @@
 }
 
 .sectionBlock + .sectionBlock {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
 }
 
 .sectionBlock:not(#footer) {
-  padding: clamp(var(--space-6), 3vw, var(--space-10));
+  padding: clamp(var(--space-6), 3.2vw, var(--space-10));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
 }
 
 .sectionBlock:not(#footer):nth-of-type(even) {

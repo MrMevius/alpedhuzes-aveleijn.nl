@@ -1,7 +1,7 @@
 .section {
   display: grid;
-  gap: var(--space-4);
-  max-width: 760px;
+  gap: var(--space-5);
+  max-width: 860px;
   margin-inline: auto;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -12,7 +12,7 @@
 
 .progressBarTrack {
   width: 100%;
-  height: 18px;
+  height: 16px;
   border-radius: 999px;
   background: #e0e8f3;
   overflow: hidden;
@@ -24,11 +24,81 @@
   transition: width 0.4s ease;
 }
 
-.metric {
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.metricCard {
   margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  padding: var(--space-4);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+}
+
+.metricLabel {
+  margin: 0;
+  color: var(--color-muted);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.metricValue {
   font-weight: 700;
   color: var(--color-text);
-  font-size: clamp(1.05rem, 0.95rem + 0.25vw, 1.2rem);
+  font-size: clamp(1.12rem, 0.98rem + 0.42vw, 1.38rem);
+}
+
+.statusMeta {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.ctaLink {
+  display: inline-block;
+  padding: 0.72rem 1.35rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ctaLink:hover,
+.ctaLink:focus-visible {
+  transform: translateY(-1px);
+}
+
+.primaryCta {
+  color: #ffffff;
+  background: var(--color-accent);
+}
+
+.primaryCta:hover,
+.primaryCta:focus-visible {
+  box-shadow: 0 10px 24px rgba(0, 40, 102, 0.24);
+}
+
+.secondaryCta {
+  color: var(--color-accent);
+  background: #ffffff;
+  border-color: #cfd9e4;
+}
+
+.secondaryCta:hover,
+.secondaryCta:focus-visible {
+  color: var(--color-accent-strong);
+  box-shadow: 0 10px 24px rgba(17, 36, 54, 0.16);
 }
 
 .status {
@@ -45,5 +115,15 @@
 @media (max-width: 640px) {
   .section {
     padding: var(--space-5);
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .ctaLink {
+    width: 100%;
+    text-align: center;
   }
 }

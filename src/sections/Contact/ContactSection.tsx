@@ -58,7 +58,12 @@ export function ContactSection({ content }: ContactSectionProps) {
 
       <div className={styles.cards}>
         {content.items.map((item) => (
-          <a key={`${item.label}-${item.href}`} href={item.href} className={styles.card}>
+          <a
+            key={`${item.label}-${item.href}`}
+            href={item.href}
+            className={styles.card}
+            aria-label={`${item.label}: ${item.value}`}
+          >
             <span className={styles.cardHeader}>
               <span className={styles.icon} aria-hidden="true">
                 {iconForLabel(item.label)}

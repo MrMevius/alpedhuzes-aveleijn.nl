@@ -7,8 +7,8 @@
       "title": "Loempia-actie",
       "description": "Bestel zelfgemaakte kiploempia’s voor € 1,50 per stuk. Je hoeft ze thuis alleen nog maar te frituren. Voor bestellingen van loempia’s kun je contact opnemen met Tim.",
       "image": {
-        "src": "/assets/images/actions-loempia.jpg",
-        "alt": ""
+        "src": "/assets/images/actions-loempia.webp",
+        "alt": "Loempia-actie van team Aveleijn"
       },
       "meta": "€ 1,50 per stuk"
     },
@@ -17,7 +17,7 @@
       "description": "Bekijk de flyer voor alle informatie over de bingo op 2 april.",
       "image": {
         "src": "/assets/gallery/Flyer Bingo 2 april.png",
-        "alt": ""
+        "alt": "Flyer van de bingo-actie op 2 april"
       },
       "meta": "2 april"
     }

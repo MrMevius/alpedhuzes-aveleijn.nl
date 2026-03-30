@@ -2,83 +2,76 @@
 
 Code-first rebuild of the Alpe d'HuZes Aveleijn website.
 
-## Stack
+## Tech stack
 
 - Frontend: React + TypeScript + Vite
 - Backend: Node.js + Express
 - Styling: CSS Modules + minimal global styles
 - Runtime: single Docker container on port `8099`
 
-## Current phase status
-
-- ✅ Phase 0–5 foundations implemented (scaffold, content model, styling modules, assets, progress API, tests, container validation)
-- ⚠️ Phase 6 parity review completed with documented deviations in `docs/review/`
-
-## Project layout
+## Repository structure
 
 - `src/` frontend app
-- `server/` backend API and services
-- `content/` editable content files
-- `public/assets/` local site media
-- `tests/` test fixtures and test files
-- `docs/review/` migration/parity/responsive/text-quirk review outputs
-- `openspec/` change artifacts
-- `opsx/` change specs and verification notes
+- `server/` backend API + services
+- `content/` editable section content
+- `public/assets/` local media files
+- `tests/` unit tests + fixtures
+- `docs/review/` migration/parity review notes
+- `opsx/` active change specs and verification logs
+- `openspec/` original phase-1 artifact history
 
-## Development
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-- Vite frontend: `http://localhost:5173`
-- Express API: `http://localhost:8099`
+- Frontend (Vite): `http://localhost:5173`
+- Backend (Express): `http://localhost:8099`
 
-## Build + run
+## Build and run
 
 ```bash
 npm run build
 npm start
 ```
 
-Production app listens on `http://localhost:8099`.
+Production server listens on `http://localhost:8099`.
 
-## Public deployment
-
-- The production container is published via **SWAG** (reverse proxy).
-- Public URL: `https://alpedhuzes-aveleijn.nl`.
-
-## Tests
+## Tests and type checks
 
 ```bash
+npm run typecheck
 npm run test
 ```
 
-Current tests cover scraper parsing and progress cache/fallback behavior.
+Current test focus: fundraiser scraping and progress cache/fallback behavior.
 
 ## API endpoints
 
 - `GET /api/health`
-- `GET /api/progress` (live server-side aggregation from 3 fundraiser pages, 1-hour cache, stale fallback)
+- `GET /api/progress`
+
+`/api/progress` performs server-side aggregation from configured fundraiser pages, uses a 1-hour cache, and returns stale fallback data when refresh fails.
 
 ## Docker
+
+### Docker run
 
 ```bash
 docker build -t alpedhuzes-aveleijn .
 docker run --rm -p 8099:8099 alpedhuzes-aveleijn
 ```
 
-## Docker Compose
-
-Build and start in detached mode:
+### Docker Compose
 
 ```bash
 docker compose build --no-cache
 docker compose up -d
 ```
 
-Optional overrides via `.env`:
+Optional `.env` overrides:
 
 ```bash
 cp .env.example .env
@@ -86,12 +79,12 @@ cp .env.example .env
 
 Supported variables:
 
-- `HOST_PORT` (default `8099`) - host port mapped to container `8099`
+- `HOST_PORT` (default `8099`)
 - `COMPOSE_CONTAINER_NAME` (default `alpedhuzes-aveleijn`)
 - `RESTART_POLICY` (default `unless-stopped`)
 - `NODE_ENV` (default `production`)
 
-Useful runtime commands:
+Useful commands:
 
 ```bash
 docker compose ps
@@ -99,43 +92,11 @@ docker compose logs --no-color --tail=100 app
 docker compose down
 ```
 
-Detached sample command:
+## Public deployment
 
-```bash
-docker run -d --name alpedhuzes-aveleijn -p 8099:8099 alpedhuzes-aveleijn
-```
+- The production container is published via **SWAG** (reverse proxy).
+- Public URL: `https://alpedhuzes-aveleijn.nl`
 
-Port mapping:
+## Contributing
 
-- Container port is fixed at `8099`.
-- `-p 8099:8099` maps host `8099` to container `8099`.
-- If host port `8099` is already in use, map another host port (example: `-p 8100:8099`).
-
-Runtime environment (minimal):
-
-- `NODE_ENV=production`
-- `PORT=8099`
-
-Container verification quick checks:
-
-```bash
-curl -i http://127.0.0.1:8099/
-curl -i http://127.0.0.1:8099/api/health
-curl -i http://127.0.0.1:8099/api/progress
-```
-
-Troubleshooting:
-
-- **Container won't start**: run `docker logs alpedhuzes-aveleijn` to inspect startup errors.
-- **Port conflict on 8099**: use a different host mapping (for example `-p 8100:8099`).
-- **Healthcheck shows unhealthy**: verify `GET /api/health` responds locally in the container logs and that startup completed.
-- **Progress endpoint looks stale/slow**: first request can be slower due to upstream scraping; stale fallback is expected if upstream fundraiser pages are temporarily unavailable.
-- **Need to re-run cleanly**: `docker rm -f alpedhuzes-aveleijn` and start again.
-
-## Architecture notes
-
-- Homepage is section-modular under `src/sections/*`.
-- Section content is loaded from typed local files in `content/sections/*.json`.
-- Site-owned assets are local under `public/assets/*`.
-- Progress scraping and caching logic is server-side under `server/services/*`.
-- Contact in phase 1 is link-based only (no form).
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for contribution guidelines and workflow expectations.

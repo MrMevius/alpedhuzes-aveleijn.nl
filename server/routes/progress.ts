@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import { getConfiguredGoalEur, getFundraiserSources, getProgressData } from '../services/progressService.js'
+import { readFundraiserSourcesFromContent, readGoalEurFromContent } from '../config/progressConfig.js'
+import { getProgressData } from '../services/progressService.js'
 
 export const progressRouter = Router()
 
@@ -12,10 +13,10 @@ progressRouter.get('/', async (_req, res) => {
 
     res.json({
       totalRaised: 0,
-      goal: getConfiguredGoalEur(),
+      goal: readGoalEurFromContent(),
       percentage: 0,
       lastUpdated: new Date().toISOString(),
-      sources: getFundraiserSources().map((source) => ({
+      sources: readFundraiserSourcesFromContent().map((source) => ({
         ...source,
         amountRaised: 0,
         status: 'error',

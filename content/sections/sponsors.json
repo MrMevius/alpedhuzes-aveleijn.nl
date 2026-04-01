@@ -79,6 +79,20 @@
       "logoSrc": "/assets/images/RM-logo.png",
       "logoAlt": "Robert Muntel",
       "logoScale": 1.0
+    },
+    {
+      "name": "Stroef De Theatergroep van Vriezenveen | Theatergroep STROEF",
+      "href": "https://www.theatergroepstroef.nl/",
+      "logoSrc": "/assets/logos/Stroef.jpg",
+      "logoAlt": "Stroef De Theatergroep van Vriezenveen | Theatergroep STROEF",
+      "logoScale": 1.0
+    },
+    {
+      "name": "Kersten Kersten Hulpmiddelen - Het draait om mensen",
+      "href": "https://kerstenhulpmiddelen.nl/",
+      "logoSrc": "/assets/logos/kersten-logo-300x116.png",
+      "logoAlt": "Kersten Kersten Hulpmiddelen - Het draait om mensen",
+      "logoScale": 1.0
     }
   ]
 }

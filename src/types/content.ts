@@ -66,6 +66,8 @@ export interface ActionItem {
   description: string
   image: ImageAsset
   imageFit?: 'cover' | 'contain'
+  imageSize?: 'default' | 'large'
+  enableLightbox?: boolean
   meta?: string
 }
 

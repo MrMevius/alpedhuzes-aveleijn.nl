@@ -13,14 +13,16 @@
       "meta": "€ 1,50 per stuk"
     },
     {
-      "title": "Flyer Bingo 2 april",
-      "description": "Bekijk de flyer voor alle informatie over de bingo op 2 april.",
+      "title": "Flyer Bingo 2 mei",
+      "description": "Bingo op zaterdag 2 mei in De Akkerstaf (Enschede). Inloop 18.30 uur, start 19.30 uur. Een set bingokaarten kost €10.",
       "imageFit": "contain",
+      "imageSize": "large",
+      "enableLightbox": true,
       "image": {
-        "src": "/assets/gallery/Flyer Bingo 2 april.png",
-        "alt": "Flyer van de bingo-actie op 2 april"
+        "src": "/assets/images/Bingo zaterdag 2 mei.jpeg",
+        "alt": "Flyer van de bingo-actie op 2 mei"
       },
-      "meta": "2 april"
+      "meta": "2 mei"
     }
   ]
 }

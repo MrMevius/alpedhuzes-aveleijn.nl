@@ -147,12 +147,21 @@ function parseActionsContent(value: unknown): ActionsContent {
     }
 
     const imageFit = imageFitRaw as 'cover' | 'contain' | undefined
+    const imageSizeRaw = item.imageSize ? requiredString(item.imageSize, `actions.items[${index}].imageSize`) : undefined
+    if (imageSizeRaw && imageSizeRaw !== 'default' && imageSizeRaw !== 'large') {
+      throw new Error(`actions.items[${index}].imageSize must be 'default' or 'large'`)
+    }
+
+    const imageSize = imageSizeRaw as 'default' | 'large' | undefined
+    const enableLightbox = typeof item.enableLightbox === 'boolean' ? item.enableLightbox : undefined
 
     return {
       title: requiredString(item.title, `actions.items[${index}].title`),
       description: requiredString(item.description, `actions.items[${index}].description`),
       image: parseImage(item.image, `actions.items[${index}].image`),
       imageFit,
+      imageSize,
+      enableLightbox,
       meta: optionalString(item.meta)
     }
   })

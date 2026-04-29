@@ -17,6 +17,10 @@
   box-shadow: var(--shadow-soft);
 }
 
+.cardLarge {
+  padding: var(--space-5);
+}
+
 .cardImage {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -25,9 +29,136 @@
   margin-bottom: var(--space-3);
 }
 
+.cardImageLarge {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-inline: 0;
+}
+
 .cardImageContain {
   object-fit: contain;
   background: #f3f6f9;
+}
+
+.imageButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.imageButton:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.zoomIcon {
+  position: absolute;
+  right: 10px;
+  bottom: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgb(0 0 0 / 0.62);
+  color: #fff;
+  pointer-events: none;
+}
+
+.zoomIcon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentcolor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 0.72);
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  z-index: 1000;
+  animation: lightboxFadeIn 180ms ease-out;
+}
+
+.lightboxContent {
+  position: relative;
+  width: min(50vw, 720px);
+  max-width: 95vw;
+  max-height: 92vh;
+  background: #fff;
+  border-radius: 12px;
+  padding: var(--space-4);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.35);
+  animation: lightboxScaleIn 220ms ease-out;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.2);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightboxImage {
+  width: 100%;
+  max-height: calc(92vh - 3.5rem);
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+@media (width < 900px) {
+  .lightboxContent {
+    width: 95vw;
+  }
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightboxScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightboxOverlay,
+  .lightboxContent {
+    animation: none;
+  }
 }
 
 .cardTitle {

@@ -93,6 +93,33 @@
       "logoSrc": "/assets/logos/kersten-logo-300x116.png",
       "logoAlt": "Kersten Kersten Hulpmiddelen - Het draait om mensen",
       "logoScale": 1.0
+    },
+    {
+      "name": "Leemans",
+      "href": "https://leemansgroep.nl/",
+      "logoSrc": "/assets/logos/Leemans.png",
+      "logoAlt": "Leemans",
+      "logoScale": 1.0
+    },
+    {
+      "name": "Expert",
+      "href": "https://www.expert.nl/",
+      "logoSrc": "/assets/logos/Expert.png",
+      "logoAlt": "Expert",
+      "logoScale": 1.0
+    },
+    {
+      "name": "Stukadoorsbedrijf Martijn Akse",
+      "logoSrc": "/assets/logos/Stukadoorsbedrijf Akse.png",
+      "logoAlt": "Stukadoorsbedrijf Martijn Akse",
+      "logoScale": 1.0
+    },
+    {
+      "name": "Velco",
+      "href": "https://www.velco.nl/",
+      "logoSrc": "/assets/logos/Logo Velco Grijs-3.png",
+      "logoAlt": "Velco",
+      "logoScale": 1.0
     }
   ]
 }

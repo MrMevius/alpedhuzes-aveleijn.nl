@@ -243,7 +243,7 @@ function parseSponsorsContent(value: unknown): SponsorsContent {
 
     return {
       name: requiredString(item.name, `sponsors.items[${index}].name`),
-      href: requiredString(item.href, `sponsors.items[${index}].href`),
+      href: optionalString(item.href),
       logoSrc: requiredString(item.logoSrc, `sponsors.items[${index}].logoSrc`),
       logoAlt: requiredString(item.logoAlt, `sponsors.items[${index}].logoAlt`),
       logoSize,

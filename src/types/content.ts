@@ -114,7 +114,7 @@ export interface SponsoringContent {
 
 export interface SponsorItem {
   name: string
-  href: string
+  href?: string
   logoSrc: string
   logoAlt: string
   logoSize?: 'default' | 'large'

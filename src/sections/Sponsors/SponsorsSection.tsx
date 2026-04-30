@@ -22,6 +22,28 @@ export function SponsorsSection({ content }: SponsorsSectionProps) {
         {content.items.map((item) => {
           const logoScale = item.logoScale ?? (item.logoSize === 'large' ? 1.2 : 1)
 
+          const logo = (
+            <ImageWithFallback
+              src={item.logoSrc}
+              alt={item.logoAlt}
+              className={styles.logo}
+              sizes="(max-width: 700px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            />
+          )
+
+          if (!item.href) {
+            return (
+              <div
+                key={item.name}
+                className={styles.card}
+                style={{ '--logo-scale': String(logoScale) } as CSSProperties}
+                aria-label={`Sponsor ${item.name}`}
+              >
+                {logo}
+              </div>
+            )
+          }
+
           return (
             <a
               key={item.name}
@@ -32,12 +54,7 @@ export function SponsorsSection({ content }: SponsorsSectionProps) {
               style={{ '--logo-scale': String(logoScale) } as CSSProperties}
               aria-label={`Bezoek sponsor ${item.name} (opent in nieuw tabblad)`}
             >
-              <ImageWithFallback
-                src={item.logoSrc}
-                alt={item.logoAlt}
-                className={styles.logo}
-                sizes="(max-width: 700px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              />
+              {logo}
             </a>
           )
         })}

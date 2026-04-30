@@ -23,6 +23,18 @@
         "alt": "Flyer van de bingo-actie op 2 mei"
       },
       "meta": "2 mei"
+    },
+    {
+      "title": "Arretjescake-actie",
+      "description": "Verwen jezelf (of iemand anders) met ambachtelijke arretjescake in de smaken normaal, rum of amaretto. Voor slechts €11 steun je direct Alpe d’HuZes.",
+      "imageFit": "contain",
+      "imageSize": "large",
+      "enableLightbox": true,
+      "image": {
+        "src": "/assets/images/arretjescake actie.jpg",
+        "alt": "Flyer van de arretjescake-actie van team Aveleijn"
+      },
+      "meta": "€11,- per cake"
     }
   ]
 }
